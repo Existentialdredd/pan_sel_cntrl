@@ -1,0 +1,277 @@
+\documentclass[10pt]{article}
+\usepackage{geometry}
+\usepackage{graphicx} %%%%%%%
+\geometry{height=8.5in,width=6.5in,letterpaper}
+\usepackage{amssymb,amsmath,natbib,amsthm,enumerate,graphicx,anysize,epstopdf,dsfont,comment,mathtools,tikz,soul,chngcntr,setspace,fancyhdr,multirow,caption,float,hyperref,fullpage,mathtools,multicol,tagging}
+\renewcommand{\bibsection}{}
+\usetikzlibrary{calc}
+\usetikzlibrary{snakes,positioning}
+\usetikzlibrary{shapes,backgrounds}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+%\hypersetup{colorlinks=true}
+\newcommand\kh{K\left( \frac{X_i-x}{h_n} \right)}
+\newcommand\khd{K\left( \frac{X_{id}-x}{h_n} \right)}
+\newcommand\kpsi{K\left( \frac{\psi-x}{h_n} \right)}
+\newcommand\xh{\left( \frac{X_i-x}{h_n} \right)}
+\newcommand\xhd{\left( \frac{X_{id}-x}{h_n} \right)}
+\newcommand\xpsi{\left( \frac{\psi-x}{h_n} \right)}
+\newcommand\logf{logf_{y|x}}
+\newcommand\sumin{\sum_{i=1}^n}
+\newcommand\sumtn{\sum_{i=1}^n}
+\newcommand\avein{\frac{1}{n}\sum_{i=1}^n}
+\newcommand\ntoi{n \rightarrow \infty}
+\newcommand\convd{\stackrel{d}{\rightarrow}}
+\newcommand\convas{\stackrel{a.s.}{\rightarrow}}
+\newcommand\convp{\stackrel{p}{\rightarrow}}
+\newcommand\supg{\underset{x\in G}{\mbox{sup}}}
+\newcommand\supt{\underset{\xi\in \xi}{\mbox{sup}}}
+\newcommand\fpar{\frac{\partial}{\partial \xi}}
+\newcommand\spar{\frac{\partial^2}{\partial \xi \partial \xi'}}
+\newcommand{\mbf}[1]{\mathbf{ #1 } }
+\newcommand{\dmbf}[1]{ \dot{\mathbf{ #1 }} }
+\newcommand{\hmbf}[1]{ \hat{\mathbf{ #1 }} }
+\newcommand{\tmbf}[1]{ \tilde{\mathbf{ #1 }} }
+\newcommand{\mbs}[1]{\boldsymbol{ #1} } 
+\newcommand{\dmbs}[1]{ \dot{\boldsymbol{ #1} } }
+\newcommand{\hmbs}[1]{ \hat{\boldsymbol{ #1} } }
+\newcommand{\tmbs}[1]{ \tilde{\boldsymbol{ #1} } }
+\DeclareMathOperator{\diag}{diag}
+\newcounter{prfptc}
+\newcounter{alem}
+\newcounter{athm}
+
+
+\newtheorem{mydef}{Definition}
+\newtheorem{assume}{Assumption}
+\newtheorem{thm}{Theorem}
+\counterwithin*{thm}{section}
+\newtheorem{lemma}{Lemma}
+\counterwithin*{lemma}{section}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proofpart}{Part}[prfptc]
+\renewcommand\theproofpart{(\roman{proofpart})}
+
+
+\def\subsectionautorefname{subsection}
+\def\equationautorefname{equation}
+
+\allowdisplaybreaks
+\begin{document}
+\doublespacing
+\begin{center} 
+\Large \bf Proposal: Parametric Panel, Selection, and Control \\
+ \large by Eric Penner \rm
+\end{center} 
+
+
+\subsection*{Introduction } 
+\noindent Given a linear in parameters fixed effects panel data model, suppose that for all cross-sections and time periods a known subset of regressors is correlated with the error term. This endogeneity problem will be resolved using the control function approach of Newey, Powell, and Vella (1999), with the additional complication of having the set of instrumental variables which are appropriate/available for at least one cross-section  not identical to those available/appropriate for a non empty subset of other cross-sections. That is, suppose that for each time period $t \in \{1,2, \ldots, T\}$, component of $Z_{1jt}$ $ d\in \{1,2, \ldots , p_1\}$, and cross-section $j \in \{1,2,\ldots, q\}$ where $\{q,T\} \in \mathbb{N}$, 
+\begin{align} 
+Y_{jt} &= \beta_0 + [\; Z_{1jt}' \;\; Z_{2jt}' \;] \beta_1 + e_j + \varepsilon_{jt} \\
+%
+Z_{1jdt} &= \alpha_{d0} + [\; Z_{1jdt-1}' \; \ldots \; Z_{1jdt-c}' \; ] \alpha_{d1} + Z_{2jt}' \alpha_{d2} + W_{jt}' \alpha_{d3} + V_{jdt} \tag{2d} \\
+%
+\addtocounter {equation} {1}
+E(&\varepsilon_{jt} | Z_{1jt} , Z_{2jt}) = E(\varepsilon_{jt} | Z_{1jt}) \neq 0  \\
+%
+E(& V_{jdt} | Z_{1jt-1},\ldots,Z_{1jt-c_1},Z_{2jt},W_{jt}) = 0 
+%
+\end{align}
+Where for $\{p_1,p_2,c,w,w_1,w_2, \ldots ,w_q \} \subset \mathbb{N}$, $Y_{jt}$, and $\varepsilon_{jt}$ are scalar random variables, $ Z_{2jt}$ is a $p_2$ dimesion vector of exogenous random variables, $Z_{1jt}$  is a vectors of endogenous random variables having dimension $p_1$. $e_j$ is a scalar fixed effect, $\varepsilon_{jt}$ is a scalar error term, $V_{jdt}$ is a scalar error term. $W_t = [ \; W_{1t} \;\; W_{2t} \;\; \cdots \;\; W_{wt} \;]'$ is vector of instrumental variables of dimension $w$, $W_{jt} = [\;W_{j1t} \;\; W_{j2t} \;\; \cdots \;\; W_{jw_jt} \;]'$ is a vector of instrumental variables of dimension $w_j$ where $\{W_{jit}\}_{i=1}^{w_j} \subset \{W_{it}\}_{i=1}^{w}$ and there exists at least one pair $j,j'  \in \{1,2, \ldots , p\}$, where $j \neq j'$, such that $\{W_{jit}\}_{i=1}^{w_j} \neq \{W_{j'it}\}_{i=1}^{w_{j'}}$. $\beta_0$ and $\alpha_{d0}$  are scalars, $\beta_1$, $\alpha_{d1}$, $\alpha_{d2}$, $\alpha_{d3}$ are $p_1 +p_2 = p$, $c$, $p_2$, and $w_j$ dimensional vectors of real numbers respectively. Lastly for notational convenience let define the following equivalences, 
+\begin{align*} 
+Z_{jt} = [\; Z_{1jt}' \;\; Z_{2jt}' \;]'  \;\;\; \text{ and } \;\;\; V_{jt} = [ \; V_{j1t} \; V_{j2t} \; \cdots \;V_{jp_1t}\;]'
+\end{align*}
+%
+\noindent \bf Remarks \rm: 
+\begin{enumerate}[a.)] 
+ \item We have in equation (1) a linear in parameters function of primary interest having endogenous random variable $Z_{2jt}$. The focus of this proposal is the identification and estimation of finite dimensional parameter $\beta_1$. 
+ \item In regards to the underlying stochastic process at work, the current level of generalization allows for either the assumption that, $\alpha_{d1} = 0$, and $\{Z_{2jt} , W_{t}, V_{jt}, \varepsilon_{jt} \}_{t=1}^T $ is an i.i.d sequence of random vectors. Or that
+$\{Z_{2jt} , W_{t}, V_{jt}\}_{t=1}^T $  is a stationary mixing sequence of d.i.d random vectors and  $\{ \varepsilon_{jt} \}_{t=1}^T$ is i.i.d or i.n.i.d.
+
+\end{enumerate}
+
+
+
+ \noindent 
+As mentioned above $E(\varepsilon_{jt} | Z_{1jt} ) \neq 0$ means that the error term $\varepsilon_{jt}$ is not orthogonal to the space of functions of $Z_{1jt}$. Following the control function approach of Newey, Powell, and Vella (1999), I assume that there exists a random variable $u_{jt}$ and unknown function $f_j(\cdot)$ such that; 
+ \begin{align*} 
+ \varepsilon_{jt} = f_j(V_{jt}) + u_{jt}  \;\;\;\ \text{ where } \;\;\; E(u_{jt} | \{Z_{j_k},W_{jk},X_{jk},V_{jk} \}_{k=1}^t) = 0
+ \end{align*}
+ Furthermore I assume that all unknown functions heretofore define are additive, that is, $f_j(V_{jt}) = \sum_{d=1}^{p_1} f_{jd}(V_{jdt})$
+%
+Where each $f_{jd}(\cdot)$ is a unknown function. 
+Now where $t>c$, we can rewrite (1) as;
+\begin{align*} 
+Y_{jt} - Y_{jc} = [ Z_{jt}' - Z_{jc}' ]\beta_1 +  \sum_{d=1}^{p_1} [ f_{jd}(V_{jdt}) - f_{jd}(V_{jdc})] + u_{jt} - u_{jc}
+\end{align*}
+Adopting the notation that for any finite dimensional random vector $A_{jt}$ define $\Delta A_{jt}  \equiv A_{jt} - A_{jc}$ we can further rewrite (1) as;
+\begin{align*} 
+\Delta Y_{jt} = \Delta Z_{jt}'\beta_1  + \sum_{l=1}^{p_1} \Delta f_{jl}(V_{jlt}) + \Delta u_{jt}
+\end{align*}
+As a result of the foregoing assumptions and definitions, we can rewrite the model as the following, 
+\begin{align} 
+\Delta Y_{jt} &= \Delta Z_{jt}'\beta_1 + \sum_{d=1}^{p_1} \Delta f_{jd}(V_{jdt}) + \Delta u_{jt} \\
+%
+Z_{1jdt} &= \alpha_{d0} + [\; Z_{1jdt-1}' \; \ldots \; Z_{1jdt-c}' \; ] \alpha_{d1} + Z_{2jt}' \alpha_{d2} + W_{jt}' \alpha_{d3} + V_{jdt} \tag{2d}\\
+%
+E(&\Delta u_{jt} | \{Z_{j_k},W_{jk},X_{jk},V_{jk} \}_{k=1}^t) = 0 \\
+%
+E(& V_{jt} | Z_{1jt-1},\ldots,Z_{1jt-c_1},Z_{2jt},W_{jt}) = 0 
+%
+\end{align}
+%
+\noindent \bf Remarks \rm:
+\begin{enumerate}[a.)] 
+    \item In equation (5), by differencing equation (1), including the control function, and imposing additivity, we have eliminated fixed effect $e_j$, but in return we now have a collection of equations $\{f_{j1}(\cdot),f_{j2}(\cdot), \ldots , f_{jp_1}(\cdot)\}$ unique to each cross-section $j$, a fate seemingly even worse than the presence of fixed effects. 
+    \item In the following I will show that using a variation on the identification technique of Manzan and Zerom (2005) SaPL, it is possible under mild conditions to identify and estimate finite dimensional parameter $\beta_1$  and hopefully achieve $\sqrt{n}$ asymptotic normality  without having to jointly estimate $f_j(V_{jt})$,  
+\end{enumerate}
+
+\noindent Next in preparation for the following lemma regarding the identification of parameter vector $\beta_1$ I define the following density ratios, 
+\begin{align*} 
+\phi_{jt} = \frac{ \prod_{d=1}^{p_1}p(V_{jdt},V_{jdc}) }{p(V_{jt},V_{jc})} 
+\end{align*}
+where for any random vector $A_{j}$, $p(A_{j})$ is the joint density of that vector. Define following conditional expectations, 
+\begin{align*} 
+H_{jd}(\Delta Z_{jt}) &= E[\phi_{jt} \Delta Z_{jt} |V_{jdt},V_{jdc}] \hspace{1.25cm} 
+%
+H_{jd}(\Delta Y_{jt}) = E[\phi_{jt} \Delta Y_{jt} |V_{jdt},V_{jdc}] \\
+%
+H_j(\Delta Z_{jt}) &= \sum_{d=1}^{p_1} H_{jd}(\Delta Z_{jt})  \hspace{2.5cm}
+%
+H_j(\Delta Y_{jt}) = \sum_{d=1}^{p_1} H_{jd}(\Delta Y_{jt})  \end{align*} 
+Lastly, define the following collection of vectors, 
+\begin{align*}
+H(\Delta Y_t)  &= [ \; H_1(\Delta Y_{1t}) \;\; H_2(\Delta Y_{2t}) \;\; \cdots \;\; H_q(\Delta Y_{qt}) \; ]'
+\hspace{1cm} 
+H(\Delta Z_t)  = [ \; H_1(\Delta Z_{1t}) \;\; H_2(\Delta Z_{2t}) \;\; \cdots \;\; H_q(\Delta Z_{qt}) \; ]' \\
+%
+\Delta Y_t &= [ \; \Delta Y_{1t} \;\;  \Delta Y_{2t} \;\; \cdots \;\; \Delta Y_{qt} \;] '  \;\;\;\;\;\; \Delta Z_t = [ \; \Delta Z_{1t} \;\;  \Delta Z_{2t} \;\; \cdots \;\; \Delta Z_{qt} \;] ' 
+\;\;\;\; \Delta u_t =  [ \; \Delta u_{1t} \;\;  \Delta u_{2t} \;\; \cdots \;\; \Delta u_{qt} \;] ' 
+\end{align*}
+Now that all necessary definitions have been made, the following lemma gives the sufficient conditions for the identification of parameter $\beta_1$, 
+\begin{lemma}
+Letting $\phi_{t} = diag\big( \{\phi_{jt}\;\}_{j=1}^q \big)$, if
+\begin{enumerate}[i.)] 
+\item $E\big[ f_{jd}(V_{jdt})\big] = E\big[ f_{jd}(V_{jdc}) \big] 
+$ for all $d\in \{1,2, \ldots , p_1\}$, $j\in \{1,2, \cdots , q\}$, and $t\in \{c+1, \ldots , T\}$
+%
+\item $E \Big( [\Delta Z_t - H(\Delta Z_t)]' [\Delta Z_t - H(\Delta Z_t)] \Big)$ is positive semi definite,
+%
+\end{enumerate}
+Then $\beta_1$ is identified, in particular,
+\begin{align*} 
+\beta_1 = E \Big( [\Delta Z_t - H(\Delta Z_t)]' \phi_{t} [\Delta Z_t - H(\Delta Z_t)] \Big)^{-1}E \Big( [\Delta Z_t - H(\Delta Z_t)]' \phi_{t} [\Delta Y_t - H(\Delta Y_t)] \Big)
+\end{align*} 
+%
+\begin{proof} I begin with a series of preliminary results, which combine to show the main result. First for $d \neq k$ consider,
+\begin{align*} 
+E \big[ \phi_{jt} & \Delta f_{jk}(V_{jkt}) |V_{jdt},V_{jdc} \big]  = \int \phi_{jt} \Delta f_{jk}(V_{jkt}) p(V_{jt},V_{jc})p(V_{jdt},V_{jdc})^{-1}dV_{j-dt}V_{j-dc} \\
+%
+& = \int \Delta f_{jk}(V_{jkt}) p(V_{jkt},V_{jkc}) dV_{jkt} V_{jkc}\prod_{a \notin\{d,k\}}\int p(V_{jat},V_{jac}) dV_{jat} V_{jac} \\
+& = E\big[ \Delta f_{jk}(V_{jkt}) \big] = E\big[ f_{jk}(V_{jkt}) \big]  - E\big[ f_{jk}(V_{jkc}) \big] = 0
+\end{align*}
+Next consider 
+\begin{align*} 
+E\big[\phi_{jt} | V_{jdt},V_{jdc}\big] &= \int \phi_{jt}p(V_{jt},V_{jc})p(V_{jdt},V_{jdc})^{-1}dV_{j-dt}V_{j-dc} \\
+%
+&= \prod_{a \neq d }\int p(V_{jat},V_{jac}) dV_{jat} V_{jac}  = 1
+\end{align*}
+Consequently, 
+\begin{align*} 
+H_{jd}(\Delta Y_{jt}) &= E\big[ \phi_{jt} \Delta Y_{jt} | V_{jdt},V_{jdc} \big] \\
+%
+& =E \big[ \phi_{jt} \Delta Z_{jt}' | V_{jdt},V_{jdc} \big]\beta_1 + \Delta f_{jd}(V_{jdt})E\big[\phi_{jt} | V_{jdt},V_{jdc}\big] \\
+%
+ &\hspace{4.3cm} + \sum_{k\neq d}^{p_1} E \big[ \phi_{jt} \Delta f_{jk}(V_{jkt}) | V_{jdt},V_{jdc} \big] + E\big[  \phi_{jt}\Delta u_{jt} | V_{jdt},V_{jdc} \big]  \\
+ %
+ & = H_{jd}(\Delta Z_{jt}')\beta_1 + \Delta f_{jd}(V_{jdt}) + E\big[  \phi_{jt} E\big(\Delta u_{jt} |\{Z_{j_k},W_{jk},V_{jk} \}_{k=1}^t \big)| V_{jdt},V_{jdc} \big] \\
+ %
+ &= H_{jd}(\Delta Z_{jt}')\beta_1 + \Delta f_{jd}(V_{jdt}) 
+\end{align*}
+Furthermore
+\begin{align*} 
+H_j(\Delta Y_{jt} ) &=\sum_{d=1}^{p_1} H_{jd}(\Delta Y_{jt}) 
+%
+ = \sum_{d=1}^{p_1} H_{jd}(\Delta Z_{jt}')\beta_1 + \sum_{d=1}^{p_1} \Delta f_{jd}(V_{jdt}) 
+%
+= H_j(\Delta Z_{jt})\beta_1  + \sum_{d=1}^{p_1} \Delta f_{jl}(V_{jlt}) 
+\end{align*}
+Consequently 
+\begin{align*} 
+\sqrt{\phi_{jt}}[\Delta Y_{jt} - H_j(\Delta Y_{jt} )    =  \sqrt{\phi_{jt}}\big[ \Delta Z_{jt} - H_j(\Delta Z_{jt}) \big]\beta_1 + \sqrt{\phi_{jt}}\Delta u_{jt}
+\end{align*}
+and stacking these equations into a vector,
+\begin{align*} 
+\sqrt{\phi_{t}}[\Delta Y_{t} - H(\Delta Y_{t} )    = \sqrt{\phi_t} \big[ \Delta Z_{t} - H(\Delta Z_{t}) \big]\beta_1 + \sqrt{\phi_t}\Delta u_{t}
+\end{align*}
+The result follows since $E\big[ \sqrt{\phi_t} E\big(\Delta u_{t}|\{Z_{j_k},W_{jk},V_{jk} \}_{k=1}^t\big) \big] = 0$ 
+\end{proof}
+\end{lemma}
+\subsection*{Estimation} 
+
+\noindent \bf Step One: \rm 
+\begin{itemize} 
+    \item Case 1: (Selection), For all $j\in \{ 1,2, \ldots ,q\}$, $W_{jt}$ is an unknown subset of $W_t$, consequently equations (2d) is estimated with the incorporation of a variable selection procedure as a first/preliminary step.
+    \item Case 2: (No selection), For all $j\in \{ 1,2, \ldots ,q\}$, $W_{jt}$ is a known subset of $W_t$, consequently equations (2d) are estimated parametrically. 
+    \item In either case the estimation of (2d) will generate residual vectors; 
+    \begin{align*}
+    \hat{V}_t = [\;  \hat{V}_{1t}' \;\; \hat{V}_{2t}' \;\; \cdots \;\;  \hat{V}_{p_1t}' \; ]'
+    \end{align*}
+\end{itemize}
+
+\noindent \bf Step Two: \rm 
+\begin{itemize} 
+    \item 2.1 : Obtain Rosenblatt Kernel Density Estimates of, $p(V_{jdt},V_{jdc})$, and $p(V_{jt},V_{jc})$ using $\{\hat{V}_{jt}, \hat{V}_{jc}\}_{t=c+1}^T$.  
+    \item 2.2 : Form estimated density ratio $\hat{\phi}_{jt}$ with densities estimated in previous step. 
+\end{itemize}
+\noindent \bf Step Three: \rm 
+\begin{itemize} 
+    \item 3.1: Obtain Nadaraya Watson estimates of $H_{jd}(\Delta Z_{jt})$, and $H_{jd}(\Delta Y_{jt})$, then construct 
+    \begin{align*} 
+    \hat{H}_j(\Delta Z_{jt}) &= \sum_{d=1}^{p_1} \hat{H}_{jd}(\Delta Z_{jt})  \hspace{1.5cm}
+%
+\hat{H}_j(\Delta Y_{jt}) = \sum_{d=1}^{p_1} \hat{H}_{jd}(\Delta Y_{jt}) 
+    \end{align*}
+
+    \item 3.2: Let $T^* = T - c-1$  and construct the following vectors using estimates from previous steps. 
+    \begin{align*} 
+   \hat{H}(\Delta Y_t)  &= [ \; \hat{H}_1(\Delta Y_{1t}) \;\; \hat{H}_2(\Delta Y_{2t}) \;\; \cdots \;\; \hat{H}_q(\Delta Y_{qt}) \; ]'\\
+%
+\hat{H}(\Delta Z_t)  &= [ \; \hat{H}_1(\Delta Z_{1t}) \;\; \hat{H}_2(\Delta Z_{2t}) \;\; \cdots \;\; \hat{H}_q(\Delta Z_{qt}) \; ]'\\
+%
+\Delta Z &= [ \; \Delta Z_{c+1}' \;\; \Delta Z_{c+2}' \;\; \cdots \;\; \Delta Z_{T}' \;]' \\
+%
+ \Delta Y &= [ \; \Delta Y_{c+1} \;\; \Delta Y_{c+2} \;\; \cdots \;\; \Delta Y_{T} \;]' \\
+%
+\hat{H}(\Delta Z) &= \big[\; \hat{H}(\Delta Z_{c+1})' \;\; \hat{H}(\Delta Z_{c +2})' \;\;\cdots \;\; \hat{H}(\Delta Z_{T})' \; \big] \\
+%
+ \hat{H}(\Delta Y) &= \big[\; \hat{H}(\Delta Y_{c+1}) \;\; \hat{H}(\Delta Y_{c +2}) \;\;\cdots \;\; \hat{H}(\Delta Y_{T}) \; \big]
+\end{align*}
+\end{itemize}
+%
+\noindent \bf Step Four:\rm 
+\begin{itemize}
+    \item 4.1: Let $\hat{\phi} = diag\big( \{\hat{\phi}_t\}_{c+1}^T \big)$ Calculate $\hat{\beta}_1$ as follows,  
+    \begin{align*} 
+  \hat{\beta}_1 = \Big( [\Delta Z - \hat{H}(\Delta Z)]' \hat{\phi} [\Delta Z - \hat{H}(\Delta Z)] \Big)^{-1} \Big( [\Delta Z - \hat{H}(\Delta Z)]' \hat{\phi} [\Delta Y - \hat{H}(\Delta Y)] \Big)
+    \end{align*}
+\end{itemize}
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+\end{document} 
