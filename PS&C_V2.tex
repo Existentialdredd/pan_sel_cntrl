@@ -69,7 +69,7 @@
 \begin{align} 
 Y_{jt} &= \beta_0 + [\; Z_{1jt}' \;\; Z_{2jt}' \;] \beta_1 + e_j + \varepsilon_{jt} \\
 %
-Z_{1jdt} &= \alpha_{d0} + [\; Z_{1jdt-1}' \; \ldots \; Z_{1jdt-c}' \; ] \alpha_{d1} + Z_{2jt}' \alpha_{d2} + W_{jt}' \alpha_{d3} + V_{jdt} \tag{2d} \\
+Z_{1jdt} &= \alpha_{jd0} + [\; Z_{1jdt-1} \; \ldots \; Z_{1jdt-c} \; ] \alpha_{jd1} + Z_{2jt}' \alpha_{jd2} + W_{jt}' \alpha_{jd3} + V_{jdt} \tag{2d} \\
 %
 \addtocounter {equation} {1}
 E(&\varepsilon_{jt} | Z_{1jt} , Z_{2jt}) = E(\varepsilon_{jt} | Z_{1jt}) \neq 0  \\
@@ -77,7 +77,7 @@ E(&\varepsilon_{jt} | Z_{1jt} , Z_{2jt}) = E(\varepsilon_{jt} | Z_{1jt}) \neq 0 
 E(& V_{jdt} | Z_{1jt-1},\ldots,Z_{1jt-c_1},Z_{2jt},W_{jt}) = 0 
 %
 \end{align}
-Where for $\{p_1,p_2,c,w,w_1,w_2, \ldots ,w_q \} \subset \mathbb{N}$, $Y_{jt}$, and $\varepsilon_{jt}$ are scalar random variables, $ Z_{2jt}$ is a $p_2$ dimesion vector of exogenous random variables, $Z_{1jt}$  is a vectors of endogenous random variables having dimension $p_1$. $e_j$ is a scalar fixed effect, $\varepsilon_{jt}$ is a scalar error term, $V_{jdt}$ is a scalar error term. $W_t = [ \; W_{1t} \;\; W_{2t} \;\; \cdots \;\; W_{wt} \;]'$ is vector of instrumental variables of dimension $w$, $W_{jt} = [\;W_{j1t} \;\; W_{j2t} \;\; \cdots \;\; W_{jw_jt} \;]'$ is a vector of instrumental variables of dimension $w_j$ where $\{W_{jit}\}_{i=1}^{w_j} \subset \{W_{it}\}_{i=1}^{w}$ and there exists at least one pair $j,j'  \in \{1,2, \ldots , p\}$, where $j \neq j'$, such that $\{W_{jit}\}_{i=1}^{w_j} \neq \{W_{j'it}\}_{i=1}^{w_{j'}}$. $\beta_0$ and $\alpha_{d0}$  are scalars, $\beta_1$, $\alpha_{d1}$, $\alpha_{d2}$, $\alpha_{d3}$ are $p_1 +p_2 = p$, $c$, $p_2$, and $w_j$ dimensional vectors of real numbers respectively. Lastly for notational convenience let define the following equivalences, 
+Where for $\{p_1,p_2,c,w,w_1,w_2, \ldots ,w_q \} \subset \mathbb{N}$, $Y_{jt}$, and $\varepsilon_{jt}$ are scalar random variables, $ Z_{2jt}$ is a $p_2$ dimesion vector of exogenous random variables, $Z_{1jt}$  is a vector of endogenous random variables having dimension $p_1$. $e_j$ is a scalar fixed effect, $\varepsilon_{jt}$ is a scalar error term, $V_{jdt}$ is a scalar error term. $W_t = [ \; W_{1t} \;\; W_{2t} \;\; \cdots \;\; W_{wt} \;]'$ is vector of instrumental variables of dimension $w$, $W_{jt} = [\;W_{j1t} \;\; W_{j2t} \;\; \cdots \;\; W_{jw_jt} \;]'$ is a vector of instrumental variables of dimension $w_j$ where $\{W_{jit}\}_{i=1}^{w_j} \subset \{W_{it}\}_{i=1}^{w}$ and there exists at least one pair $j,j'  \in \{1,2, \ldots , p\}$, where $j \neq j'$, such that $\{W_{jit}\}_{i=1}^{w_j} \neq \{W_{j'it}\}_{i=1}^{w_{j'}}$. $\beta_0$ and $\alpha_{d0}$  are scalars, $\beta_1$, $\alpha_{d1}$, $\alpha_{d2}$, $\alpha_{d3}$ are $p_1 +p_2 = p$, $c$, $p_2$, and $w_j$ dimensional vectors of real numbers respectively. Lastly for notational convenience let define the following equivalences, 
 \begin{align*} 
 Z_{jt} = [\; Z_{1jt}' \;\; Z_{2jt}' \;]'  \;\;\; \text{ and } \;\;\; V_{jt} = [ \; V_{j1t} \; V_{j2t} \; \cdots \;V_{jp_1t}\;]'
 \end{align*}
@@ -198,11 +198,11 @@ H_j(\Delta Y_{jt} ) &=\sum_{d=1}^{p_1} H_{jd}(\Delta Y_{jt})
 \end{align*}
 Consequently 
 \begin{align*} 
-\sqrt{\phi_{jt}}[\Delta Y_{jt} - H_j(\Delta Y_{jt} )    =  \sqrt{\phi_{jt}}\big[ \Delta Z_{jt} - H_j(\Delta Z_{jt}) \big]\beta_1 + \sqrt{\phi_{jt}}\Delta u_{jt}
+\sqrt{\phi_{jt}}[\Delta Y_{jt} - H_j(\Delta Y_{jt} ) ]   =  \sqrt{\phi_{jt}}\big[ \Delta Z_{jt} - H_j(\Delta Z_{jt}) \big]\beta_1 + \sqrt{\phi_{jt}}\Delta u_{jt}
 \end{align*}
 and stacking these equations into a vector,
 \begin{align*} 
-\sqrt{\phi_{t}}[\Delta Y_{t} - H(\Delta Y_{t} )    = \sqrt{\phi_t} \big[ \Delta Z_{t} - H(\Delta Z_{t}) \big]\beta_1 + \sqrt{\phi_t}\Delta u_{t}
+\sqrt{\phi_{t}}[\Delta Y_{t} - H(\Delta Y_{t} )]    = \sqrt{\phi_t} \big[ \Delta Z_{t} - H(\Delta Z_{t}) \big]\beta_1 + \sqrt{\phi_t}\Delta u_{t}
 \end{align*}
 The result follows since $E\big[ \sqrt{\phi_t} E\big(\Delta u_{t}|\{Z_{j_k},W_{jk},V_{jk} \}_{k=1}^t\big) \big] = 0$ 
 \end{proof}
@@ -256,13 +256,69 @@ The result follows since $E\big[ \sqrt{\phi_t} E\big(\Delta u_{t}|\{Z_{j_k},W_{j
   \hat{\beta}_1 = \Big( [\Delta Z - \hat{H}(\Delta Z)]' \hat{\phi} [\Delta Z - \hat{H}(\Delta Z)] \Big)^{-1} \Big( [\Delta Z - \hat{H}(\Delta Z)]' \hat{\phi} [\Delta Y - \hat{H}(\Delta Y)] \Big)
     \end{align*}
 \end{itemize}
+\newpage
 
 
- 
+\subsection*{Estimation of Secondary Equations} 
+The specification of eqn (2d) is quite general; intercepts $\alpha_{jd0}$, coefficients on lagged endogenous regressors $\alpha_{jd1}$, and coefficients on exogenous regressors $\alpha_{jd2}$ are unique to each cross-section. Furthermore, although instruments $W_{jt}$ are shared across cross-sections their coefficients $\alpha_{jd3}$ are unique, and there is no sense in which error terms $V_{jdt}$ are correlated across cross-section. As a result there are a number of restrictions on the regressors and parameters of  eqn (2d) which have a substantial effect on the manner in which they will be estimated. \\
+
+\noindent \bf Note: \rm In order to drastically simplify estimation, for the time being, I assume that $\alpha_{jd} = \vec{0}$ eliminating the need to deal with any time series concerns. \\
+
+\noindent \bf Case 1: \rm $W_{jt}$ is an known subset of $W_{t}$.   \
+
+\noindent If so estimation is comprised of q separate OLS regressions.
+\begin{align*} 
+(\hat{\alpha}_{0jd}, \hat{\alpha}_{2jd},\hat{\alpha}_{3jd})  = \arg \min \sum_{t=1}^T\left(Z_{ijt} - \alpha_{0} -  Z_{2jt}'\alpha_{2} - W_{jt}'\alpha_{3} \right)^2
+\end{align*}
+where $\alpha_0 \in \mathbb{R}$, $\alpha_{1} \in \mathbb{R}^{p_2}$, and $\alpha_{3} \in \mathbb{R}^{w_j}$. So that $\hat{V}_{jdt} = Z_{1jdt} - \hat{\alpha}_{0jd} - Z_{2jt}'\hat{\alpha}_{2jd} - W_{jt}'\hat{\alpha}_{3jd}$. \\
+
+\noindent\bf Case 2: \rm $W_{jt}$ is an unknown subset of $W_{t}$. \
+
+\noindent If so estimation is comprised of $q$ separate regressions, each of  which will incorporate a subset selection routine. In particular, here I will utilize the lasso estimator. In this case let $\alpha_{3jd} =  [\;\alpha_{3jd1} \;\; \alpha_{3jd2} \;\; \cdots \;\; \alpha_{3jdw} \; ]$ where $\alpha_{jdl} = 0$ whenever $W_{tl}$ is not an element of $W_{jt}$
+%
+\begin{align*} 
+(\hat{\alpha}_{0jd}, \hat{\alpha}_{2jd},\hat{\alpha}_{3jd})  = \arg \min \sum_{t=1}^T\left(Z_{ijt} - \alpha_{0} -  Z_{2jt}'\alpha_{2} - W_{t}'\alpha_{3} \right)^2 \;\; \text{ subject to } \;\; \sum_{l = 1}^w |a_{3l}| \leq t
+\end{align*}
+where $\alpha_0 \in \mathbb{R}$, $\alpha_{1} \in \mathbb{R}^{p_2}$, and $\alpha_{3} \in \mathbb{R}^{w}$. So that $\hat{V}_{jdt} = Z_{1jdt} -\hat{\alpha}_{0jd} - Z_{2jt}'\hat{\alpha}_{2jd} - W_{t}'\hat{\alpha}_{3jd}$. \\
 
 
+\noindent \bf Case 3: \rm $W_{jt}$ is an known subset of $W_{t}$, $\alpha_{2jd} = \alpha_{2d}$ for all $j \in \{1,2, \ldots,q\}$, and $\alpha_{3jdl} = \alpha_{3dl}$ whenever $W_{tl}$ is an element of $W_{jt}$. Let $M_j = diag(\{1\{ W_{tl} \in W_{jt}\} \}_{l=1}^w)$ so that,
+%
+\begin{align*}
+Z_{1jdt} &= \alpha_{0jd} + Z_{2jt}' \alpha_{jd2} + W_{jt}' \alpha_{jd3} + V_{jdt} \\
+& =\alpha_{0jd} + Z_{2jt}' \alpha_{d2} + W_{t}'M_j \alpha_{d3} + V_{jdt}
+\end{align*}
+Now let $\Delta Z_{1jdt} = Z_{1jdt} - Z_{1jdt-1}$, $\Delta Z_{2jdt} = Z_{2jdt} - Z_{2jdt-1}$, $\Delta W_{t} = W_{t} - W_{t-1}$, and $\Delta V_{jdt} = V_{jdt} - V_{jdt-1}$ so that, 
+\begin{align*} 
+\Delta Z_{1jdt} =\Delta Z_{2jt}' \alpha_{d2} + \Delta W_{t}'M_j \alpha_{d3} + \Delta V_{jdt}
+\end{align*}
+As a result,
+%
+\begin{align*} 
+(\hat{\alpha}_{2d},\hat{\alpha}_{3d})  = \arg \min \sum_{j=1}^q\sum_{t=1}^T\left( \Delta Z_{ijt} -  \Delta Z_{2jt}'\alpha_{2} - \Delta W_{t}'M_j\alpha_{3} \right)^2 
+\end{align*}
+%
+\noindent and $\hat{V}_{jdt} = Z_{1jdt} - Z_{2jt}'\hat{\alpha}_{2d} - W_{jt}'\hat{\alpha}_{3d} - T^{-1}\sum_{t=1}^T  (Z_{1jdt} - Z_{2jt}'\hat{\alpha}_{2d} - W_{t}'M_j\hat{\alpha}_{3d}) $. Since $E( Z_{1jdt} - Z_{2jt}'\alpha_{2d} - W_{jt}'\alpha_{3d})= E(V_{jdt} + \alpha_{0jd}) = \alpha_{0jd}$.  \\
 
+\noindent \bf Case 4: \rm $W_{jt}$ is an unknown subset of $W_{t}$, $\alpha_{2jd} = \alpha_{2d}$ for all $j \in \{1,2, \ldots,q\}$, and $\alpha_{3jdl} = \alpha_{3dl}$ whenever $W_{tl}$ is an element of $W_{jt}$. Let $M_j = diag(\{1\{ W_{tl} \in W_{jt}\} \}_{l=1}^w)$ so that as before,
+%
+\begin{align*} 
+\Delta Z_{1jdt} =\Delta Z_{2jt}' \alpha_{d2} + \Delta W_{t}'M_j \alpha_{d3} + \Delta V_{jdt}
+\end{align*}
+but in order to introduce our selection procedure we will estimate the coefficients on $W_{t}$ as if that are not identical, then average the non zero estimates to construct a single estimate.  Consider, 
+\begin{align*} 
+(\hat{\alpha}_{2d},\hat{\alpha}_{3d})  = \arg \min \sum_{j=1}^q\sum_{t=1}^T\left( \Delta Z_{ijt} -  \Delta Z_{2jt}'\alpha_{2} - \Delta W_{t}'\alpha_{3j} \right)^2 \;\; \text{ subject to } \;\; \sum_{l=1}^w|\alpha_{3jl}| \leq t \;\;  \text{ for all } 1 \leq j \leq q
+\end{align*}
+Where $\hat{\alpha}_{3d} = [\; \hat{\alpha}_{31d}' \;\; \hat{\alpha}_{32d}'  \;\; \cdots \;\; \hat{\alpha}_{3qd}' \;]'  $.
+Consequently define for some $\varepsilon > 0$ 
+\begin{align*} 
+\tilde{\alpha}_{3dl} = \frac{\sum_{j=1}^q \hat{\alpha}_{3jdl} 1\{ \hat{\alpha}_{3jdl} > \varepsilon\} }{\sum_{j=1}^q1\{ \hat{\alpha}_{3jdl} > \varepsilon\}}
+\end{align*}
+Now let $\tilde{\alpha}_{3d} = [ \; \tilde{\alpha}_{3d1} \;\; \tilde{\alpha}_{3d2} \;\; \cdots \;\; \tilde{\alpha}_{3dw}  \; ]'$ and $\tilde{M}_{jd} = diag( \{1\{\hat{\alpha}_{3jdl} > \varepsilon\} \}_{l=1}^w)$ so that, 
 
+\begin{align*}
+\hat{V}_{jdt} = Z_{1jdt} - Z_{2jt}'\hat{\alpha}_{2d} - W_{t}'\tilde{M}_{jd}\tilde{\alpha}_{3d} - T^{-1}\sum_{t=1}^T  (Z_{1jdt} - Z_{2jt}'\hat{\alpha}_{2d} - W_{t}'\tilde{M}_{jd}\tilde{\alpha}_{3d}) 
+\end{align*}
 
 
 
