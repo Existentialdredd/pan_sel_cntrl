@@ -1,3 +1,5 @@
+## The following is a collection of kernel density functions
+
 import numpy as np
 
 def mvkernel(x,kernel):
