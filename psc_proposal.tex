@@ -69,15 +69,15 @@
 \begin{align} 
 Y_{jt} &= \beta_0 + [\; Z_{1jt}' \;\; Z_{2jt}' \;] \beta_1 + e_j + \varepsilon_{jt} \\
 %
-Z_{1jdt} &= \alpha_{jd0} + [\; Z_{1jdt-1} \; \ldots \; Z_{1jdt-c} \; ] \alpha_{jd1} + Z_{2jt}' \alpha_{jd2} + W_{jt}' \alpha_{jd3} + V_{jdt} \tag{2d} \\
+Z_{1jdt} &= \alpha_{jd0} + Z_{2jt}' \alpha_{1jd} + W_{jt}' \alpha_{2jd} + V_{jdt} \tag{2d} \\
 %
 \addtocounter {equation} {1}
 E(&\varepsilon_{jt} | Z_{1jt} , Z_{2jt}) = E(\varepsilon_{jt} | Z_{1jt}) \neq 0  \\
 %
-E(& V_{jdt} | Z_{1jt-1},\ldots,Z_{1jt-c_1},Z_{2jt},W_{jt}) = 0 
+E(& V_{jdt} | Z_{2jt},W_{jt}) = 0 
 %
 \end{align}
-Where for $\{p_1,p_2,c,w,w_1,w_2, \ldots ,w_q \} \subset \mathbb{N}$, $Y_{jt}$, and $\varepsilon_{jt}$ are scalar random variables, $ Z_{2jt}$ is a $p_2$ dimesion vector of exogenous random variables, $Z_{1jt}$  is a vector of endogenous random variables having dimension $p_1$. $e_j$ is a scalar fixed effect, $\varepsilon_{jt}$ is a scalar error term, $V_{jdt}$ is a scalar error term. $W_t = [ \; W_{1t} \;\; W_{2t} \;\; \cdots \;\; W_{wt} \;]'$ is vector of instrumental variables of dimension $w$, $W_{jt} = [\;W_{j1t} \;\; W_{j2t} \;\; \cdots \;\; W_{jw_jt} \;]'$ is a vector of instrumental variables of dimension $w_j$ where $\{W_{jit}\}_{i=1}^{w_j} \subset \{W_{it}\}_{i=1}^{w}$ and there exists at least one pair $j,j'  \in \{1,2, \ldots , p\}$, where $j \neq j'$, such that $\{W_{jit}\}_{i=1}^{w_j} \neq \{W_{j'it}\}_{i=1}^{w_{j'}}$. $\beta_0$ and $\alpha_{d0}$  are scalars, $\beta_1$, $\alpha_{d1}$, $\alpha_{d2}$, $\alpha_{d3}$ are $p_1 +p_2 = p$, $c$, $p_2$, and $w_j$ dimensional vectors of real numbers respectively. Lastly for notational convenience let define the following equivalences, 
+Where for $\{p_1,p_2,c,w,w_1,w_2, \ldots ,w_q \} \subset \mathbb{N}$, $Y_{jt}$, and $\varepsilon_{jt}$ are scalar random variables, $ Z_{2jt}$ is a $p_2$ dimesion vector of exogenous random variables, $Z_{1jt}$  is a vector of endogenous random variables having dimension $p_1$. $e_j$ is a scalar fixed effect, $\varepsilon_{jt}$ is a scalar error term, $V_{jdt}$ is a scalar error term. $W_t = [ \; W_{1t} \;\; W_{2t} \;\; \cdots \;\; W_{wt} \;]'$ is vector of instrumental variables of dimension $w$, $W_{jt} = [\;W_{j1t} \;\; W_{j2t} \;\; \cdots \;\; W_{jw_jt} \;]'$ is a vector of instrumental variables of dimension $w_j$ where $\{W_{jit}\}_{i=1}^{w_j} \subset \{W_{it}\}_{i=1}^{w}$ and there exists at least one pair $j,j'  \in \{1,2, \ldots , p\}$, where $j \neq j'$, such that $\{W_{jit}\}_{i=1}^{w_j} \neq \{W_{j'it}\}_{i=1}^{w_{j'}}$. $\beta_0$ and $\alpha_{d0}$  are scalars, $\beta_1$, $\alpha_{1d}$, $\alpha_{2d}$ are $p_1 +p_2 = p$, $p_2$, and $w_j$ dimensional vectors of real numbers respectively. Lastly for notational convenience let define the following equivalences, 
 \begin{align*} 
 Z_{jt} = [\; Z_{1jt}' \;\; Z_{2jt}' \;]'  \;\;\; \text{ and } \;\;\; V_{jt} = [ \; V_{j1t} \; V_{j2t} \; \cdots \;V_{jp_1t}\;]'
 \end{align*}
@@ -112,7 +112,7 @@ As a result of the foregoing assumptions and definitions, we can rewrite the mod
 \begin{align} 
 \Delta Y_{jt} &= \Delta Z_{jt}'\beta_1 + \sum_{d=1}^{p_1} \Delta f_{jd}(V_{jdt}) + \Delta u_{jt} \\
 %
-Z_{1jdt} &= \alpha_{d0} + [\; Z_{1jdt-1}' \; \ldots \; Z_{1jdt-c}' \; ] \alpha_{d1} + Z_{2jt}' \alpha_{d2} + W_{jt}' \alpha_{d3} + V_{jdt} \tag{2d}\\
+Z_{1jdt} &= \alpha_{d0} + Z_{2jt}' \alpha_{1jd} + W_{jt}' \alpha_{2jd} + V_{jdt} \tag{2d}\\
 %
 E(&\Delta u_{jt} | \{Z_{j_k},W_{jk},X_{jk},V_{jk} \}_{k=1}^t) = 0 \\
 %
@@ -207,62 +207,9 @@ and stacking these equations into a vector,
 The result follows since $E\big[ \sqrt{\phi_t} E\big(\Delta u_{t}|\{Z_{j_k},W_{jk},V_{jk} \}_{k=1}^t\big) \big] = 0$ 
 \end{proof}
 \end{lemma}
-\subsection*{Estimation} 
-
-\noindent \bf Step One: \rm 
-\begin{itemize} 
-    \item Case 1: (Selection), For all $j\in \{ 1,2, \ldots ,q\}$, $W_{jt}$ is an unknown subset of $W_t$, consequently equations (2d) is estimated with the incorporation of a variable selection procedure as a first/preliminary step.
-    \item Case 2: (No selection), For all $j\in \{ 1,2, \ldots ,q\}$, $W_{jt}$ is a known subset of $W_t$, consequently equations (2d) are estimated parametrically. 
-    \item In either case the estimation of (2d) will generate residual vectors; 
-    \begin{align*}
-    \hat{V}_t = [\;  \hat{V}_{1t}' \;\; \hat{V}_{2t}' \;\; \cdots \;\;  \hat{V}_{p_1t}' \; ]'
-    \end{align*}
-\end{itemize}
-
-\noindent \bf Step Two: \rm 
-\begin{itemize} 
-    \item 2.1 : Obtain Rosenblatt Kernel Density Estimates of, $p(V_{jdt},V_{jdc})$, and $p(V_{jt},V_{jc})$ using $\{\hat{V}_{jt}, \hat{V}_{jc}\}_{t=c+1}^T$.  
-    \item 2.2 : Form estimated density ratio $\hat{\phi}_{jt}$ with densities estimated in previous step. 
-\end{itemize}
-\noindent \bf Step Three: \rm 
-\begin{itemize} 
-    \item 3.1: Obtain Nadaraya Watson estimates of $H_{jd}(\Delta Z_{jt})$, and $H_{jd}(\Delta Y_{jt})$, then construct 
-    \begin{align*} 
-    \hat{H}_j(\Delta Z_{jt}) &= \sum_{d=1}^{p_1} \hat{H}_{jd}(\Delta Z_{jt})  \hspace{1.5cm}
-%
-\hat{H}_j(\Delta Y_{jt}) = \sum_{d=1}^{p_1} \hat{H}_{jd}(\Delta Y_{jt}) 
-    \end{align*}
-
-    \item 3.2: Let $T^* = T - c-1$  and construct the following vectors using estimates from previous steps. 
-    \begin{align*} 
-   \hat{H}(\Delta Y_t)  &= [ \; \hat{H}_1(\Delta Y_{1t}) \;\; \hat{H}_2(\Delta Y_{2t}) \;\; \cdots \;\; \hat{H}_q(\Delta Y_{qt}) \; ]'\\
-%
-\hat{H}(\Delta Z_t)  &= [ \; \hat{H}_1(\Delta Z_{1t}) \;\; \hat{H}_2(\Delta Z_{2t}) \;\; \cdots \;\; \hat{H}_q(\Delta Z_{qt}) \; ]'\\
-%
-\Delta Z &= [ \; \Delta Z_{c+1}' \;\; \Delta Z_{c+2}' \;\; \cdots \;\; \Delta Z_{T}' \;]' \\
-%
- \Delta Y &= [ \; \Delta Y_{c+1} \;\; \Delta Y_{c+2} \;\; \cdots \;\; \Delta Y_{T} \;]' \\
-%
-\hat{H}(\Delta Z) &= \big[\; \hat{H}(\Delta Z_{c+1})' \;\; \hat{H}(\Delta Z_{c +2})' \;\;\cdots \;\; \hat{H}(\Delta Z_{T})' \; \big] \\
-%
- \hat{H}(\Delta Y) &= \big[\; \hat{H}(\Delta Y_{c+1}) \;\; \hat{H}(\Delta Y_{c +2}) \;\;\cdots \;\; \hat{H}(\Delta Y_{T}) \; \big]
-\end{align*}
-\end{itemize}
-%
-\noindent \bf Step Four:\rm 
-\begin{itemize}
-    \item 4.1: Let $\hat{\phi} = diag\big( \{\hat{\phi}_t\}_{c+1}^T \big)$ Calculate $\hat{\beta}_1$ as follows,  
-    \begin{align*} 
-  \hat{\beta}_1 = \Big( [\Delta Z - \hat{H}(\Delta Z)]' \hat{\phi} [\Delta Z - \hat{H}(\Delta Z)] \Big)^{-1} \Big( [\Delta Z - \hat{H}(\Delta Z)]' \hat{\phi} [\Delta Y - \hat{H}(\Delta Y)] \Big)
-    \end{align*}
-\end{itemize}
-\newpage
-
 
 \subsection*{Estimation of Secondary Equations} 
-The specification of equation (2d) is quite general where; intercepts $\alpha_{0jd}$, coefficients on lagged endogenous regressors $\alpha_{1jd}$, and coefficients on exogenous regressors $\alpha_{2jd}$ are unique to each cross-section. Furthermore, although instruments $W_{jt}$ are shared across cross-sections their coefficients $\alpha_{3jd}$ are unique, and as yet there is no sense in which error terms $V_{jdt}$ are correlated across cross-section. As a result there are a number of restrictions on the regressors and parameters of equation (2d) which can be imposed and have a substantial effect on the manner in which $V_{jdt}$ will be estimated. \\
-
-\noindent \bf Note: \rm In order to drastically simplify estimation, for the time being, I assume that $\alpha_{1jd} = \vec{0}$ eliminating the need to deal with any time series concerns. \\
+The specification of equation (2d) is quite general where; intercepts $\alpha_{0jd}$, and coefficients on exogenous regressors $\alpha_{1jd}$ are unique to each cross-section. Furthermore, although instruments $W_{jt}$ are shared across cross-sections their coefficients $\alpha_{2jd}$ are unique, and as yet there is no sense in which error terms $V_{jdt}$ are correlated across cross-section. As a result there are a number of restrictions on the regressors and parameters of equation (2d) which can be imposed and have a substantial effect on the manner in which $V_{jdt}$ will be estimated. \\
 
 \noindent \bf Note: \rm For all vectors of dimension greater than two, I reference the individual elements of each vector by including a comma followed by a scalar value in the subscript. I reference the entire vector whenever the comma is omitted. For example,
 \begin{align*} 
@@ -274,25 +221,25 @@ W_{jt} = \begin{bmatrix} W_{jt,1} & W_{jt,2} & \cdots & W_{jt,w_j} \end{bmatrix}
 
 \noindent If so, estimation is comprised of q separate OLS regressions.
 \begin{align*} 
-(\hat{\alpha}_{0jd}, \hat{\alpha}_{2jd},\hat{\alpha}_{3jd}) 
- = \arg \min \sum_{t=1}^T\left(Z_{1jdt} - \alpha_{0} -  Z_{2jt}'\alpha_{2} - W_{jt}'\alpha_{3} \right)^2
+(\hat{\alpha}_{0jd}, \hat{\alpha}_{1jd},\hat{\alpha}_{2jd}) 
+ = \arg \min \sum_{t=1}^T\left(Z_{1jdt} - \alpha_{0} -  Z_{2jt}'\alpha_{1} - W_{jt}'\alpha_{2} \right)^2
 \end{align*}
 where $\alpha_0 \in \mathbb{R}$, $\alpha_{1} \in \mathbb{R}^{p_2}$, and $\alpha_{3} \in \mathbb{R}^{w_j}$. So that 
-$$\hat{V}_{jdt} = Z_{1jdt} - \hat{\alpha}_{0jd} - Z_{2jt}'\hat{\alpha}_{2jd} - W_{jt}'\hat{\alpha}_{3jd}$$
+$$\hat{V}_{jdt} = Z_{1jdt} - \hat{\alpha}_{0jd} - Z_{2jt}'\hat{\alpha}_{1jd} - W_{jt}'\hat{\alpha}_{2jd}$$
 
 %%%%
 \noindent\bf Case 2: \rm $W_{jt}$ is an unknown subset of $W_{t}$. \
 
-\noindent If so, estimation is comprised of $q$ separate regressions, each of which will incorporate a subset selection routine. Let $\alpha_{3jd} =  [\;\alpha_{3jd,1} \;\; \alpha_{3jd,2} \;\; \cdots \;\; \alpha_{3jd,w} \; ]$ where $\alpha_{jd,l} = 0$ whenever $W_{t,l} \notin W_{jt}$. To facilitate subset selection I apply the lasso estimator by imposing an $\ell^1$ penalty on estimated coefficients $\hat{\alpha}_{3jd}$ .
+\noindent If so, estimation is comprised of $q$ separate regressions, each of which will incorporate a subset selection routine. Let $\alpha_{2jd} =  [\;\alpha_{2jd,1} \;\; \alpha_{2jd,2} \;\; \cdots \;\; \alpha_{2jd,w} \; ]$ where $\alpha_{2jd,l} = 0$ whenever $W_{t,l} \notin W_{jt}$. To facilitate subset selection I apply the lasso estimator by imposing an $\ell^1$ penalty on estimated coefficients $\hat{\alpha}_{2jd}$ .
 %
 \begin{align*} 
-(\hat{\alpha}_{0jd}, \hat{\alpha}_{2jd},\hat{\alpha}_{3jd})  = \arg \min \sum_{t=1}^T\left(Z_{1jdt} - \alpha_{0} -  Z_{2jt}'\alpha_{2} - W_{t}'\alpha_{3} \right)^2 \;\; \text{ subject to } \;\; \sum_{l = 1}^w |a_{3,l}| \leq \lambda
+(\hat{\alpha}_{0jd}, \hat{\alpha}_{1jd},\hat{\alpha}_{2jd})  = \arg \min \sum_{t=1}^T\left(Z_{1jdt} - \alpha_{0} -  Z_{2jt}'\alpha_{1} - W_{t}'\alpha_{2} \right)^2 \;\; \text{ subject to } \;\; \sum_{l = 1}^w |a_{2,l}| \leq \lambda
 \end{align*}
-where $\alpha_0 \in \mathbb{R}$, $\alpha_{1} \in \mathbb{R}^{p_2}$, and $\alpha_{3} \in \mathbb{R}^{w}$. So that again,
- $$\hat{V}_{jdt} = Z_{1jdt} -\hat{\alpha}_{0jd} - Z_{2jt}'\hat{\alpha}_{2jd} - W_{t}'\hat{\alpha}_{3jd}$$ 
+where $\alpha_0 \in \mathbb{R}$, $\alpha_{1} \in \mathbb{R}^{p_2}$, and $\alpha_{2} \in \mathbb{R}^{w}$. So that again,
+ $$\hat{V}_{jdt} = Z_{1jdt} -\hat{\alpha}_{0jd} - Z_{2jt}'\hat{\alpha}_{1jd} - W_{t}'\hat{\alpha}_{2jd}$$ 
 
 %%%%
-\noindent \bf Case 3: \rm $W_{jt}$ is an known subset of $W_{t}$, $\alpha_{2jd} =\alpha_{2j'd} \equiv \alpha_{2d}$ for all $j,j' \in \{1,2, \ldots,q\}$, and $\alpha_{3jd,l} = \alpha_{3j'd,l} \equiv \alpha_{3d,l}$ whenever $W_{t,l} \in W_{jt}$ and $W_{t,l} \in W_{j't}$ . Let
+\noindent \bf Case 3: \rm $W_{jt}$ is an known subset of $W_{t}$, $\alpha_{1jd} =\alpha_{1j'd} \equiv \alpha_{1d}$ for all $j,j' \in \{1,2, \ldots,q\}$, and $\alpha_{2jd,l} = \alpha_{2j'd,l} \equiv \alpha_{2d,l}$ whenever $W_{t,l} \in W_{jt}$ and $W_{t,l} \in W_{j't}$ . Let
 \begin{align*}
 1[W_{t,l} \in W_{tj}] = 
 \begin{cases} 
@@ -305,46 +252,105 @@ where $\alpha_0 \in \mathbb{R}$, $\alpha_{1} \in \mathbb{R}^{p_2}$, and $\alpha_
 and $M_j = \diag(\{1[ W_{tl} \in W_{jt}] \}_{l=1}^w)$ so that,
 %
 \begin{align*}
-Z_{1jdt} &= \alpha_{0jd} + Z_{2jt}' \alpha_{jd2} + W_{jt}' \alpha_{3jd} + V_{jdt} \\
-& =\alpha_{0jd} + Z_{2jt}' \alpha_{2d} + W_{t}'M_j \alpha_{3d} + V_{jdt}
+Z_{1jdt} &= \alpha_{0jd} + Z_{2jt}' \alpha_{1jd} + W_{jt}' \alpha_{2jd} + V_{jdt} \\
+& =\alpha_{0jd} + Z_{2jt}' \alpha_{1d} + W_{t}'M_j \alpha_{2d} + V_{jdt}
 \end{align*}
 Now let $\Delta Z_{1jdt} = Z_{1jdt} - Z_{1jd(t-1)}$, $\Delta Z_{2jdt} = Z_{2jdt} - Z_{2jd(t-1)}$, $\Delta W_{t} = W_{t} - W_{t-1}$, and $\Delta V_{jdt} = V_{jdt} - V_{jd(t-1)}$ so that, 
 \begin{align*} 
-\Delta Z_{1jdt} =\Delta Z_{2jt}' \alpha_{2d} + \Delta W_{t}'M_j \alpha_{3d} + \Delta V_{jdt}
+\Delta Z_{1jdt} =\Delta Z_{2jt}' \alpha_{1d} + \Delta W_{t}'M_j \alpha_{2d} + \Delta V_{jdt}
 \end{align*}
 As a result,
 %
 \begin{align*} 
-(\hat{\alpha}_{2d},\hat{\alpha}_{3d})  = \arg \min \sum_{j=1}^q\sum_{t=1}^T\left( \Delta Z_{ijt} -  \Delta Z_{2jt}'\alpha_{2} - \Delta W_{t}'M_j\alpha_{3} \right)^2 
+(\hat{\alpha}_{1d},\hat{\alpha}_{2d})  = \arg \min \sum_{j=1}^q\sum_{t=1}^T\left( \Delta Z_{ijt} -  \Delta Z_{2jt}'\alpha_{1} - \Delta W_{t}'M_j\alpha_{2} \right)^2 
 \end{align*}
 %
 \noindent so that given
 \begin{align*} 
 \alpha_{0jd} =  E(V_{jdt} + \alpha_{0jd}) =
-E( Z_{1jdt} - Z_{2jt}'\alpha_{2d} - W_{t}'M_j\alpha_{3d}) 
+E( Z_{1jdt} - Z_{2jt}'\alpha_{1d} - W_{t}'M_j\alpha_{2d}) 
 \end{align*}
 we have
- $$\hat{V}_{jdt} = Z_{1jdt} - Z_{2jt}'\hat{\alpha}_{2d} - W_{t}'M_j\hat{\alpha}_{3d} - T^{-1}\sum_{t=1}^T  (Z_{1jdt} - Z_{2jt}'\hat{\alpha}_{2d} - W_{t}'M_j\hat{\alpha}_{3d}) $$. 
+ $$\hat{V}_{jdt} = Z_{1jdt} - Z_{2jt}'\hat{\alpha}_{1d} - W_{t}'M_j\hat{\alpha}_{2d} - T^{-1}\sum_{t=1}^T  (Z_{1jdt} - Z_{2jt}'\hat{\alpha}_{1d} - W_{t}'M_j\hat{\alpha}_{2d}) $$. 
 
-\noindent \bf Case 4:\rm $W_{jt}$ is an unknown subset of $W_{t}$, $\alpha_{2jd} =\alpha_{2j'd} \equiv \alpha_{2d}$ for all $j,j' \in \{1,2, \ldots,q\}$, and $\alpha_{3jd,l} = \alpha_{3j'd,l} \equiv \alpha_{3d,l}$ whenever $W_{t,l} \in W_{jt}$ and $W_{t,l} \in W_{j't}$ . Inhereting notation from case 3 we again have,
+\noindent \bf Case 4: \rm $W_{jt}$ is an unknown subset of $W_{t}$, $\alpha_{1jd} =\alpha_{1j'd} \equiv \alpha_{1d}$ for all $j,j' \in \{1,2, \ldots,q\}$, and $\alpha_{2jd,l} = \alpha_{2j'd,l} \equiv \alpha_{2d,l}$ whenever $W_{t,l} \in W_{jt}$ and $W_{t,l} \in W_{j't}$ . Inheriting notation from case 3 we again have,
 %
 \begin{align*} 
-\Delta Z_{1jdt} =\Delta Z_{2jt}' \alpha_{2d} + \Delta W_{t}'M_j \alpha_{3d} + \Delta V_{jdt}
+\Delta Z_{1jdt} =\Delta Z_{2jt}' \alpha_{1d} + \Delta W_{t}'M_j \alpha_{2d} + \Delta V_{jdt}
 \end{align*}
 %
 In order to introduce our selection procedure we will estimate the coefficients on $W_{t}$ as if that are not identical, then average the non zero estimates to construct a single estimate.  Consider, 
 \begin{align*} 
-(\hat{\alpha}_{2d},\hat{\alpha}_{3d})  = \arg \min \sum_{j=1}^q\sum_{t=2}^T\left( \Delta Z_{1jdt} -  \Delta Z_{2jt}'\alpha_{2} - \Delta W_{t}'\alpha_{3j} \right)^2 \;\; \text{ subject to } \;\; \sum_{l=1}^w|\alpha_{3j,l}| \leq \lambda \;\;  \text{ for all } 1 \leq j \leq q
+(\hat{\alpha}_{1d},\hat{\alpha}_{2d})  = \arg \min \sum_{j=1}^q\sum_{t=2}^T\left( \Delta Z_{1jdt} -  \Delta Z_{2jt}'\alpha_{1} - \Delta W_{t}'\alpha_{2j} \right)^2 \;\; \text{ subject to } \;\; \sum_{l=1}^w|\alpha_{2j,l}| \leq \lambda \;\;  \text{ for all } 1 \leq j \leq q
 \end{align*}
 Consequently define for some $\varepsilon > 0$ 
 \begin{align*} 
-\tilde{\alpha}_{3d,l} = \frac{\sum_{l=1}^q \hat{\alpha}_{3jd,l} 1[ \hat{\alpha}_{3jd,l} > \varepsilon ] }{ \sum_{l=1}^q 1[ \hat{\alpha}_{3jd,l} > \varepsilon] }
+\tilde{\alpha}_{2d,l} = \frac{\sum_{l=1}^q \hat{\alpha}_{2jd,l} 1[ \hat{\alpha}_{2jd,l} > \varepsilon ] }{ \sum_{l=1}^q 1[ \hat{\alpha}_{2jd,l} > \varepsilon] }
 \end{align*}
-Now let $\tilde{\alpha}_{3d} = [ \; \tilde{\alpha}_{3d,1} \;\; \tilde{\alpha}_{3d,2} \;\; \cdots \;\; \tilde{\alpha}_{3d,w}  \; ]'$ and $\tilde{M}_{jd} = \diag( \{ 1[\hat{\alpha}_{3jd,l} > \varepsilon ] \}_{l=1}^w)$ so that, 
+Now let $\tilde{\alpha}_{2d} = [ \; \tilde{\alpha}_{2d,1} \;\; \tilde{\alpha}_{2d,2} \;\; \cdots \;\; \tilde{\alpha}_{2d,w}  \; ]'$ and $\tilde{M}_{jd} = \diag( \{ 1[\hat{\alpha}_{2jd,l} > \varepsilon ] \}_{l=1}^w)$ so that, 
 %
 \begin{align*}
-\hat{V}_{jdt} = Z_{1jdt} - Z_{2jt}'\hat{\alpha}_{2d} - W_{t}'\tilde{M}_{jd}\tilde{\alpha}_{3d} - T^{-1}\sum_{t=1}^T  (Z_{1jdt} - Z_{2jt}'\hat{\alpha}_{2d} - W_{t}'\tilde{M}_{jd}\tilde{\alpha}_{3d}) 
+\hat{V}_{jdt} = Z_{1jdt} - Z_{2jt}'\hat{\alpha}_{1d} - W_{t}'\tilde{M}_{jd}\tilde{\alpha}_{2d} - T^{-1}\sum_{t=1}^T  (Z_{1jdt} - Z_{2jt}'\hat{\alpha}_{1d} - W_{t}'\tilde{M}_{jd}\tilde{\alpha}_{2d}) 
 \end{align*}
+
+\subsection*{Estimation of the Primary Equation} 
+%
+Now having estimates of all error terms, I construct the following estimates of the primary equation coefficients. \\
+%
+\noindent \bf Density Estimation: \rm  \\
+%
+Obtain Rosenblatt Kernel Density Estimates of, $p(V_{jdt},V_{jdc})$, and $p(V_{jt},V_{jc})$ using $\{\hat{V}_{jt}, \hat{V}_{jc}\}_{t=2}^T$.  
+\begin{align*} 
+ \hat{p}(\hat{V}_{jdt,l},\hat{V}_{jd(t-1),l}) 
+&= (nh_1h_2)^{-1}\sum_{ i = 2 }^T k_1[h_1^{-1}(\hat{V}_{jdi,l} -\hat{V}_{jdt,l})]k_2[h_2^{-1}(\hat{V}_{jdi,l} -\hat{V}_{jd(t-1),l})]  \\
+%
+ \hat{p}(\hat{V}_{jt,l},\hat{V}_{j(t-1),l}) 
+&= (nh_1^{p_1}h_2^{p_1})^{-1}\sum_{ i = 2 }^T \prod_{d=1}^{p_1} k_1[h_1^{-1}(\hat{V}_{jdi,l} -\hat{V}_{jdt,l})]k_2[h_2^{-1}(\hat{V}_{jdi,l} -\hat{V}_{jd(t-1),l})] 
+\end{align*}
+ Form estimated density ratio $\hat{\phi}_{jt}$ with densities estimated in previous step. 
+\begin{align*} 
+\hat{\phi}_{jt} = \frac{ \prod_{d=1}^{p_1}\hat{p}(\hat{V}_{jt,d},\hat{V}_{j(t-1),d}) }{\hat{p}(\hat{V}_{jt},\hat{V}_{j(t-1)})}
+%
+\hspace{1cm}
+%
+\hat{\theta}_{jt,d} = \frac{ \prod_{l \neq d}^{p_1}\hat{p}(\hat{V}_{jt,l},\hat{V}_{j(t-1),l}) }{\hat{p}(\hat{V}_{jt},\hat{V}_{j(t-1)})}
+\end{align*}
+%
+\noindent \bf H Function Estimation:  \rm  \\
+%
+Now estimate the conditional expectation functions by a variation on a Nadaraya Watson estimation. 
+\begin{align*} 
+ \hat{H}_{j,d}(\Delta Z_{jt,a}) = [(T-1)b_1b_2]^{-1} \sum_{l \neq t , l > 1}^T k_1[b_1^{-1}(V_{jl,d} - V_{jt,d})] k_2[b_2^{-1}(V_{j(l-1),d} - V_{j(t-1),d})] \hat{\theta}_{jl,d} \Delta Z_{jl,a}
+ \end{align*}
+then construct 
+    \begin{align*} 
+    \hat{H}_j(\Delta Z_{jt}) &= \sum_{d=1}^{p_1} \hat{H}_{jd}(\Delta Z_{jt})  \hspace{1.5cm}
+%
+\hat{H}_j(\Delta Y_{jt}) = \sum_{d=1}^{p_1} \hat{H}_{jd}(\Delta Y_{jt}) 
+    \end{align*}
+where $ \Delta Z_{jt}  = [ \; \; \Delta Z_{jt,1}    \;\;    \Delta Z_{jt,2}     \;   \cdots \; \Delta Z_{jt,(p_1+p_2)} \;\; ]'$. Then construct the following vectors. 
+%
+ \begin{align*} 
+   \hat{H}(\Delta Y_t)  &= [ \; \hat{H}_1(\Delta Y_{1t}) \;\; \hat{H}_2(\Delta Y_{2t}) \;\; \cdots \;\; \hat{H}_q(\Delta Y_{qt}) \; ]'\\
+%
+\hat{H}(\Delta Z_t)  &= [ \; \hat{H}_1(\Delta Z_{1t}) \;\; \hat{H}_2(\Delta Z_{2t}) \;\; \cdots \;\; \hat{H}_q(\Delta Z_{qt}) \; ]'\\
+%
+\Delta Z &= [ \; \Delta Z_{2}' \;\; \Delta Z_{3}' \;\; \cdots \;\; \Delta Z_{T}' \;]' \\
+%
+ \Delta Y &= [ \; \Delta Y_{2} \;\; \Delta Y_{3} \;\; \cdots \;\; \Delta Y_{T} \;]' \\
+%
+\hat{H}(\Delta Z) &= \big[\; \hat{H}(\Delta Z_{2})' \;\; \hat{H}(\Delta Z_{3})' \;\;\cdots \;\; \hat{H}(\Delta Z_{T})' \; \big] \\
+%
+ \hat{H}(\Delta Y) &= \big[\; \hat{H}(\Delta Y_{2}) \;\; \hat{H}(\Delta Y_{3}) \;\;\cdots \;\; \hat{H}(\Delta Y_{T}) \; \big]
+\end{align*}
+%
+\noindent \bf $\beta_1$ Coefficient Estimation:\rm \\
+%
+ Let $\hat{\phi} = diag\big( \{\hat{\phi}_t\}_{c+1}^T \big)$ Calculate $\hat{\beta}_1$ as follows,  
+    \begin{align*} 
+  \hat{\beta}_1 = \Big( [\Delta Z - \hat{H}(\Delta Z)]' \hat{\phi} [\Delta Z - \hat{H}(\Delta Z)] \Big)^{-1} \Big( [\Delta Z - \hat{H}(\Delta Z)]' \hat{\phi} [\Delta Y - \hat{H}(\Delta Y)] \Big)
+    \end{align*}
+\newpage
 
 
 
