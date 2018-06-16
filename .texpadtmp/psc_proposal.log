@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  16 JUN 2018 14:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  16 JUN 2018 15:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1050,8 +1050,8 @@ Package rerunfilecheck Info: File `psc_proposal.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 359.
  ) 
 Here is how much of TeX's memory you used:
- 21881 strings out of 493014
- 434636 string characters out of 6133351
+ 21880 strings out of 493014
+ 434630 string characters out of 6133351
  536877 words of memory out of 5000000
  24960 multiletter control sequences out of 15000+600000
  7516 words of font info for 29 fonts, out of 8000000 for 9000
@@ -1072,10 +1072,10 @@ ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive
 /2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/
 2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 Output written on /Users/ericpenner/Desktop/post_grad_rsrch/pan_sel_cntrl/.texp
-adtmp/psc_proposal.pdf (8 pages, 171359 bytes).
+adtmp/psc_proposal.pdf (8 pages, 171127 bytes).
 PDF statistics:
- 125 PDF objects out of 1000 (max. 8388607)
- 100 compressed objects within 1 object stream
- 27 named destinations out of 1000 (max. 500000)
+ 124 PDF objects out of 1000 (max. 8388607)
+ 99 compressed objects within 1 object stream
+ 26 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -84,9 +84,9 @@ Z_{jt} = [\; Z_{1jt}' \;\; Z_{2jt}' \;]'  \;\;\; \text{ and } \;\;\; V_{jt} = [ 
 %
 \noindent \bf Remarks \rm: 
 \begin{enumerate}[a.)] 
- \item We have in equation (1) a linear in parameters function of primary interest having endogenous random variable $Z_{2jt}$. The focus of this proposal is the identification and estimation of finite dimensional parameter $\beta_1$. 
- \item In regards to the underlying stochastic process at work, the current level of generalization allows for either the assumption that, $\alpha_{d1} = 0$, and $\{Z_{2jt} , W_{t}, V_{jt}, \varepsilon_{jt} \}_{t=1}^T $ is an i.i.d sequence of random vectors. Or that
-$\{Z_{2jt} , W_{t}, V_{jt}\}_{t=1}^T $  is a stationary mixing sequence of d.i.d random vectors and  $\{ \varepsilon_{jt} \}_{t=1}^T$ is i.i.d or i.n.i.d.
+ \item We have in equation (1) a linear in parameters function of primary interest having endogenous random variable $Z_{1jt}$. The focus of this proposal is the identification and estimation of finite dimensional parameter $\beta_1$. 
+% \item In regards to the underlying stochastic process at work, the current level of generalization allows for either the assumption that, $\alpha_{d1} = 0$, and $\{Z_{2jt} , W_{t}, V_{jt}, \varepsilon_{jt} \}_{t=1}^T $ is an i.i.d sequence of random vectors. Or that
+%$\{Z_{2jt} , W_{t}, V_{jt}\}_{t=1}^T $  is a stationary mixing sequence of d.i.d random vectors and  $\{ \varepsilon_{jt} \}_{t=1}^T$ is i.i.d or i.n.i.d.
 
 \end{enumerate}
 
@@ -100,11 +100,11 @@ As mentioned above $E(\varepsilon_{jt} | Z_{1jt} ) \neq 0$ means that the error 
  Furthermore I assume that all unknown functions heretofore define are additive, that is, $f_j(V_{jt}) = \sum_{d=1}^{p_1} f_{jd}(V_{jdt})$
 %
 Where each $f_{jd}(\cdot)$ is a unknown function. 
-Now where $t>c$, we can rewrite (1) as;
+Now where $t>1$, we can rewrite (1) as;
 \begin{align*} 
-Y_{jt} - Y_{jc} = [ Z_{jt}' - Z_{jc}' ]\beta_1 +  \sum_{d=1}^{p_1} [ f_{jd}(V_{jdt}) - f_{jd}(V_{jdc})] + u_{jt} - u_{jc}
+Y_{jt} - Y_{j(t-1)} = [ Z_{jt}' - Z_{j(t-1)}' ]\beta_1 +  \sum_{d=1}^{p_1} [ f_{jd}(V_{jdt}) - f_{jd}(V_{jd(t-1)})] + u_{jt} - u_{j(t-1)}
 \end{align*}
-Adopting the notation that for any finite dimensional random vector $A_{jt}$ define $\Delta A_{jt}  \equiv A_{jt} - A_{jc}$ we can further rewrite (1) as;
+Adopting the notation that for any finite dimensional random vector $A_{jt}$ define $\Delta A_{jt}  \equiv A_{jt} - A_{j(t-1)}$ we can further rewrite (1) as;
 \begin{align*} 
 \Delta Y_{jt} = \Delta Z_{jt}'\beta_1  + \sum_{l=1}^{p_1} \Delta f_{jl}(V_{jlt}) + \Delta u_{jt}
 \end{align*}
@@ -116,7 +116,7 @@ Z_{1jdt} &= \alpha_{d0} + Z_{2jt}' \alpha_{1jd} + W_{jt}' \alpha_{2jd} + V_{jdt}
 %
 E(&\Delta u_{jt} | \{Z_{j_k},W_{jk},X_{jk},V_{jk} \}_{k=1}^t) = 0 \\
 %
-E(& V_{jt} | Z_{1jt-1},\ldots,Z_{1jt-c_1},Z_{2jt},W_{jt}) = 0 
+E(& V_{jt} | Z_{2jt},W_{jt}) = 0 
 %
 \end{align}
 %
@@ -128,13 +128,13 @@ E(& V_{jt} | Z_{1jt-1},\ldots,Z_{1jt-c_1},Z_{2jt},W_{jt}) = 0
 
 \noindent Next in preparation for the following lemma regarding the identification of parameter vector $\beta_1$ I define the following density ratios, 
 \begin{align*} 
-\phi_{jt} = \frac{ \prod_{d=1}^{p_1}p(V_{jdt},V_{jdc}) }{p(V_{jt},V_{jc})} 
+\phi_{jt} = \frac{ \prod_{d=1}^{p_1}p(V_{jdt},V_{jd(t-1)}) }{p(V_{jt},V_{j(t-1)})} 
 \end{align*}
 where for any random vector $A_{j}$, $p(A_{j})$ is the joint density of that vector. Define following conditional expectations, 
 \begin{align*} 
-H_{jd}(\Delta Z_{jt}) &= E[\phi_{jt} \Delta Z_{jt} |V_{jdt},V_{jdc}] \hspace{1.25cm} 
+H_{jd}(\Delta Z_{jt}) &= E[\phi_{jt} \Delta Z_{jt} |V_{jdt},V_{jd(t-1)}] \hspace{1.25cm} 
 %
-H_{jd}(\Delta Y_{jt}) = E[\phi_{jt} \Delta Y_{jt} |V_{jdt},V_{jdc}] \\
+H_{jd}(\Delta Y_{jt}) = E[\phi_{jt} \Delta Y_{jt} |V_{jdt},V_{jd(t-1)}] \\
 %
 H_j(\Delta Z_{jt}) &= \sum_{d=1}^{p_1} H_{jd}(\Delta Z_{jt})  \hspace{2.5cm}
 %
@@ -152,8 +152,8 @@ Now that all necessary definitions have been made, the following lemma gives the
 \begin{lemma}
 Letting $\phi_{t} = diag\big( \{\phi_{jt}\;\}_{j=1}^q \big)$, if
 \begin{enumerate}[i.)] 
-\item $E\big[ f_{jd}(V_{jdt})\big] = E\big[ f_{jd}(V_{jdc}) \big] 
-$ for all $d\in \{1,2, \ldots , p_1\}$, $j\in \{1,2, \cdots , q\}$, and $t\in \{c+1, \ldots , T\}$
+\item $E\big[ f_{jd}(V_{jdt})\big] = E\big[ f_{jd}(V_{jd(t-1)}) \big] 
+$ for all $d\in \{1,2, \ldots , p_1\}$, $j\in \{1,2, \cdots , q\}$, and $t\in \{2, \ldots , T\}$
 %
 \item $E \Big( [\Delta Z_t - H(\Delta Z_t)]' [\Delta Z_t - H(\Delta Z_t)] \Big)$ is positive semi definite,
 %
@@ -165,26 +165,26 @@ Then $\beta_1$ is identified, in particular,
 %
 \begin{proof} I begin with a series of preliminary results, which combine to show the main result. First for $d \neq k$ consider,
 \begin{align*} 
-E \big[ \phi_{jt} & \Delta f_{jk}(V_{jkt}) |V_{jdt},V_{jdc} \big]  = \int \phi_{jt} \Delta f_{jk}(V_{jkt}) p(V_{jt},V_{jc})p(V_{jdt},V_{jdc})^{-1}dV_{j-dt}V_{j-dc} \\
+E \big[ \phi_{jt} & \Delta f_{jk}(V_{jkt}) |V_{jdt},V_{jd(t-1)} \big]  = \int \phi_{jt} \Delta f_{jk}(V_{jkt}) p(V_{jt},V_{j(t-1)})p(V_{jdt},V_{jd(t-1)})^{-1}dV_{j-dt}V_{j-d(t-1)} \\
 %
-& = \int \Delta f_{jk}(V_{jkt}) p(V_{jkt},V_{jkc}) dV_{jkt} V_{jkc}\prod_{a \notin\{d,k\}}\int p(V_{jat},V_{jac}) dV_{jat} V_{jac} \\
-& = E\big[ \Delta f_{jk}(V_{jkt}) \big] = E\big[ f_{jk}(V_{jkt}) \big]  - E\big[ f_{jk}(V_{jkc}) \big] = 0
+& = \int \Delta f_{jk}(V_{jkt}) p(V_{jkt},V_{jk(t-1)}) dV_{jkt} V_{jk(t-1)}\prod_{a \notin\{d,k\}}\int p(V_{jat},V_{ja(t-1)}) dV_{jat} V_{ja(t-1)} \\
+& = E\big[ \Delta f_{jk}(V_{jkt}) \big] = E\big[ f_{jk}(V_{jkt}) \big]  - E\big[ f_{jk}(V_{jk(t-1)}) \big] = 0
 \end{align*}
 Next consider 
 \begin{align*} 
-E\big[\phi_{jt} | V_{jdt},V_{jdc}\big] &= \int \phi_{jt}p(V_{jt},V_{jc})p(V_{jdt},V_{jdc})^{-1}dV_{j-dt}V_{j-dc} \\
+E\big[\phi_{jt} | V_{jdt},V_{jd(t-1)}\big] &= \int \phi_{jt}p(V_{jt},V_{j(t-1)})p(V_{jdt},V_{jd(t-1)})^{-1}dV_{j-dt}V_{j-d(t-1)} \\
 %
-&= \prod_{a \neq d }\int p(V_{jat},V_{jac}) dV_{jat} V_{jac}  = 1
+&= \prod_{a \neq d }\int p(V_{jat},V_{ja(t-1)}) dV_{jat} V_{ja(t-1)}  = 1
 \end{align*}
 Consequently, 
 \begin{align*} 
-H_{jd}(\Delta Y_{jt}) &= E\big[ \phi_{jt} \Delta Y_{jt} | V_{jdt},V_{jdc} \big] \\
+H_{jd}(\Delta Y_{jt}) &= E\big[ \phi_{jt} \Delta Y_{jt} | V_{jdt},V_{jd(t-1)} \big] \\
 %
-& =E \big[ \phi_{jt} \Delta Z_{jt}' | V_{jdt},V_{jdc} \big]\beta_1 + \Delta f_{jd}(V_{jdt})E\big[\phi_{jt} | V_{jdt},V_{jdc}\big] \\
+& =E \big[ \phi_{jt} \Delta Z_{jt}' | V_{jdt},V_{jd(t-1)} \big]\beta_1 + \Delta f_{jd}(V_{jdt})E\big[\phi_{jt} | V_{jdt},V_{jd(t-1)}\big] \\
 %
- &\hspace{4.3cm} + \sum_{k\neq d}^{p_1} E \big[ \phi_{jt} \Delta f_{jk}(V_{jkt}) | V_{jdt},V_{jdc} \big] + E\big[  \phi_{jt}\Delta u_{jt} | V_{jdt},V_{jdc} \big]  \\
+ &\hspace{4.3cm} + \sum_{k\neq d}^{p_1} E \big[ \phi_{jt} \Delta f_{jk}(V_{jkt}) | V_{jdt},V_{jd(t-1)} \big] + E\big[  \phi_{jt}\Delta u_{jt} | V_{jdt},V_{jd(t-1)} \big]  \\
  %
- & = H_{jd}(\Delta Z_{jt}')\beta_1 + \Delta f_{jd}(V_{jdt}) + E\big[  \phi_{jt} E\big(\Delta u_{jt} |\{Z_{j_k},W_{jk},V_{jk} \}_{k=1}^t \big)| V_{jdt},V_{jdc} \big] \\
+ & = H_{jd}(\Delta Z_{jt}')\beta_1 + \Delta f_{jd}(V_{jdt}) + E\big[  \phi_{jt} E\big(\Delta u_{jt} |\{Z_{j_k},W_{jk},V_{jk} \}_{k=1}^t \big)| V_{jdt},V_{jd(t-1)} \big] \\
  %
  &= H_{jd}(\Delta Z_{jt}')\beta_1 + \Delta f_{jd}(V_{jdt}) 
 \end{align*}
@@ -295,7 +295,7 @@ Now let $\tilde{\alpha}_{2d} = [ \; \tilde{\alpha}_{2d,1} \;\; \tilde{\alpha}_{2
 
 \subsection*{Estimation of the Primary Equation} 
 %
-Now having estimates of all error terms, I construct the following estimates of the primary equation coefficients. \\
+Now having estimates of all error terms, I construct the following estimates of the primary equation coefficients in the following way. \\
 %
 \noindent \bf Density Estimation: \rm  \\
 %
@@ -346,7 +346,7 @@ where $ \Delta Z_{jt}  = [ \; \; \Delta Z_{jt,1}    \;\;    \Delta Z_{jt,2}     
 %
 \noindent \bf $\beta_1$ Coefficient Estimation:\rm \\
 %
- Let $\hat{\phi} = diag\big( \{\hat{\phi}_t\}_{c+1}^T \big)$ Calculate $\hat{\beta}_1$ as follows,  
+ Let $\hat{\phi} = diag\big( \{\hat{\phi}_t\}_{c+1}^T \big)$ and calculate $\hat{\beta}_1$ as follows,  
     \begin{align*} 
   \hat{\beta}_1 = \Big( [\Delta Z - \hat{H}(\Delta Z)]' \hat{\phi} [\Delta Z - \hat{H}(\Delta Z)] \Big)^{-1} \Big( [\Delta Z - \hat{H}(\Delta Z)]' \hat{\phi} [\Delta Y - \hat{H}(\Delta Y)] \Big)
     \end{align*}
