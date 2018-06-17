@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  16 JUN 2018 15:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  16 JUN 2018 17:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -910,8 +910,8 @@ File: tikzlibrarybackgrounds.code.tex 2013/07/18 v3.0.1a (rcs-revision 1.3)
 \c@corollary=\count157
 \c@proofpart=\count158
 
-(/Users/ericpenner/Desktop/post_grad_rsrch/pan_sel_cntrl/.texpadtmp/psc_proposa
-l.aux)
+(/Users/ericpenner/Desktop/post_grad_rsrch/pan_sel_cntrl_repo/.texpadtmp/psc_pr
+oposal.aux)
 \openout1 = `psc_proposal.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
@@ -996,23 +996,23 @@ LaTeX Info: Redefining \ref on input line 59.
 LaTeX Info: Redefining \pageref on input line 59.
 LaTeX Info: Redefining \nameref on input line 59.
 
-(/Users/ericpenner/Desktop/post_grad_rsrch/pan_sel_cntrl/.texpadtmp/psc_proposa
-l.out)
-(/Users/ericpenner/Desktop/post_grad_rsrch/pan_sel_cntrl/.texpadtmp/psc_proposa
-l.out)
+(/Users/ericpenner/Desktop/post_grad_rsrch/pan_sel_cntrl_repo/.texpadtmp/psc_pr
+oposal.out)
+(/Users/ericpenner/Desktop/post_grad_rsrch/pan_sel_cntrl_repo/.texpadtmp/psc_pr
+oposal.out)
 \@outlinefile=\write5
 \openout5 = `psc_proposal.out'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 68.
+LaTeX Font Info:    Try loading font information for U+msa on input line 70.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 68.
+LaTeX Font Info:    Try loading font information for U+msb on input line 70.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (5.9816pt too wide) in paragraph at lines 79--81
+Overfull \hbox (5.9816pt too wide) in paragraph at lines 81--83
 \OT1/cmr/m/n/10 [ \OML/cmm/m/it/10 W[]  W[]   []   W[] \OT1/cmr/m/n/10 ][]$ is 
 vec-tor of in-stru-men-tal vari-ables of di-men-sion $\OML/cmm/m/it/10 w$\OT1/c
 mr/m/n/10 , $\OML/cmm/m/it/10 W[] \OT1/cmr/m/n/10 = [ \OML/cmm/m/it/10 W[]  W[]
@@ -1023,35 +1023,35 @@ mr/m/n/10 , $\OML/cmm/m/it/10 W[] \OT1/cmr/m/n/10 = [ \OML/cmm/m/it/10 W[]  W[]
 
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2]
-Overfull \hbox (19.80202pt too wide) in paragraph at lines 150--150
+Overfull \hbox (19.80202pt too wide) in paragraph at lines 152--152
 [] 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 212--213
+Underfull \hbox (badness 10000) in paragraph at lines 214--215
 
  []
 
 [4] [5]
-Overfull \hbox (15.41447pt too wide) in paragraph at lines 285--285
+Overfull \hbox (15.41447pt too wide) in paragraph at lines 287--287
 [] 
  []
 
 [6] [7] [8]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 359.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 359.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 361.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 361.
 
-(/Users/ericpenner/Desktop/post_grad_rsrch/pan_sel_cntrl/.texpadtmp/psc_proposa
-l.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 359.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 359.
+(/Users/ericpenner/Desktop/post_grad_rsrch/pan_sel_cntrl_repo/.texpadtmp/psc_pr
+oposal.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 361.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 361.
 Package rerunfilecheck Info: File `psc_proposal.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 359.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 361.
  ) 
 Here is how much of TeX's memory you used:
  21880 strings out of 493014
- 434630 string characters out of 6133351
+ 434685 string characters out of 6133351
  536877 words of memory out of 5000000
  24960 multiletter control sequences out of 15000+600000
  7516 words of font info for 29 fonts, out of 8000000 for 9000
@@ -1071,8 +1071,8 @@ live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texli
 ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive
 /2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/
 2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on /Users/ericpenner/Desktop/post_grad_rsrch/pan_sel_cntrl/.texp
-adtmp/psc_proposal.pdf (8 pages, 171127 bytes).
+Output written on /Users/ericpenner/Desktop/post_grad_rsrch/pan_sel_cntrl_repo/
+.texpadtmp/psc_proposal.pdf (8 pages, 171120 bytes).
 PDF statistics:
  124 PDF objects out of 1000 (max. 8388607)
  99 compressed objects within 1 object stream

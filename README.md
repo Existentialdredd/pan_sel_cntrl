@@ -2,21 +2,9 @@
 
 <h4> By Eric Penner </h4>
 
-** Summary: ** This repository contains a proposal, and supplemental Monte Carlo exercise for the working paper currently entitled "Panel Selection and Control". This purpose of this paper is the estimation of the parameter $\\beta_1$ in the following system of equations.
+** Summary: ** This repository contains a proposal, and supplemental Monte Carlo exercise for the working paper currently entitled "Panel Selection and Control". This purpose of this paper is the estimation of the parameters of (1) in the following system of equations.
 
-*For each time period $t \in \{1,2, \ldots, T\}$, component $ d\in \{1,2, \ldots , p_1\}$ of $Z_{1jt}$, and cross-section $j \in \{1,2,\ldots, q\}$ where $\{q,T\} \in \mathbb{N}$ consider the following,*
-
-\begin{align}
-Y_{jt} &= \beta_0 + [\; Z_{1jt}' \;\; Z_{2jt}' \;] \beta_1 + e_j + \varepsilon_{jt} \\[1em]
-%
-Z_{1jt,d} &= \alpha_{0jd} + Z_{2jt}' \alpha_{1jd} + W_{jt}' \alpha_{2jd} + V_{jt,d} \tag{2d} \\[1em]
-%
-E(&\varepsilon_{jt} | Z_{1jt} , Z_{2jt}) = E(\varepsilon_{jt} | Z_{1jt}) \neq 0  \\[1em]
-%
-E(& V_{jdt} | Z_{1j(t-1)},\ldots,Z_{1j(t-c)},Z_{2jt},W_{jt}) = 0
-%
-\end{align}
-
+![](psc_eqn.png)
 
   <h3>Jupyter Notebooks</h3>
  The Monte Carlo Exercise contained herein is written in python3 and contained in jupyter notebooks. If you are not familiar with jupyter notebooks have a look below.
@@ -27,7 +15,7 @@ alt="IMAGE ALT TEXT HERE" width="600" height="500" border="10" /> </a>
 
 <h3> My Binder </h3>
 
-
+....
 
  <h3> Contents </h3>
  * .tex/.pdf documents
