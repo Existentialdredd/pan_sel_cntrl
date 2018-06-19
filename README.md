@@ -10,7 +10,7 @@ alt="IMAGE ALT TEXT HERE" width="600" height="400" border="10" />
 </p>
 
   <h3>Jupyter Notebooks</h3>
- The Monte Carlo Exercise contained herein is written in python3 and contained in jupyter notebooks. If you are not familiar with jupyter notebooks have a look below.
+ The Monte Carlo Exercise contained herein is written in python3 and contained in jupyter notebooks. If you are not familiar with jupyter notebooks clicking on the following image will take you to a youtube video describing them.
 
 
 <p align = "center">
