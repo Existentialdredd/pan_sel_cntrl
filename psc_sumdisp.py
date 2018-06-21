@@ -89,9 +89,8 @@ out                   (list of lists) of the following elements
     inpt_dict = pscdata[0]
     # Names of primary coefficients
     pcoeff_nms = ([ ''.join(['$\\beta_{',str(1),',',str(i+1),'}$'])
-                        for i in range(pscdata[0]['n_end'])]
-                  + [''.join(['$\\beta_{',str(2),',',str(i+1),'}$'])
-                        for i in range(pscdata[0]['n_exo'])])
+                        for i in range(pscdata[0]['n_end']
+                                        + pscdata[0]['n_exo'])])
     # Extracting the true primary coefficients
     pcoeff = pd.DataFrame(pscdata[1]['pcoeff']).T
     # Adding names of each primary coefficient
@@ -225,7 +224,7 @@ Plot and Tables Displayed with interactive widgets
                               ,width = 'auto',layout = box_hlayout
                               ,style = {'description_width': 'initial'})
     # Horizontal display range slider widget
-    xlim_sel = ipw.FloatRangeSlider( value=[-0.4, 0.4], min=-0.5,max=0.5, step=0.05
+    xlim_sel = ipw.FloatRangeSlider( value=[-0.4, 0.4], min=-1,max=1, step=0.05
                                     ,description='x limits:'
                                     ,disabled=False ,continuous_update=False
                                     ,orientation='horizontal',readout=True
