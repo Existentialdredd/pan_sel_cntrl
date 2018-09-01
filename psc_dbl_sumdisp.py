@@ -34,32 +34,36 @@ out                   (list) of the following elements
     with open(input_file_full) as f_obj:
         pscdata = json.load(f_obj)
     # Extracting the estimator input dictionary
-    inpt_dic = pscdata[0]
+    inpt_dic = pscdata[0].copy()
+    del inpt_dic['inst_partition']
+    del inpt_dic['panel_partition']
+    del inpt_dic['inc']
+    del inpt_dic['in_nm']
     # Extracting Centered beta estimates
     bt_rs = pscdata[1]
     # df construction
     bt_df = pd.DataFrame(bt_rs['beta_cntrd'] ).T
     # Adding variable names
-    bt_df.columns = bt_rs['beta_sum_row']
+    bt_df.columns = bt_rs['beta_sum_clmn']
     # Extracting beta summary information
-    bt_sm = pd.DataFrame(bt_rs['beta_sum_dat']).T
+    bt_sm = pd.DataFrame(bt_rs['beta_sum_dat'])
     # Adding row bias,variance,mse names
-    bt_sm.columns = bt_rs['beta_sum_row']
+    bt_sm.columns = bt_rs['beta_sum_clmn']
     # Adding variable names
-    bt_sm.index = bt_rs['beta_sum_clmn']
+    bt_sm.index = bt_rs['beta_sum_row']
     # Extracting Centered alpha estimates
     al_rs = pscdata[2]
     # df Construction
     al_ldf = [pd.DataFrame(al_rs['alpha_cntrd'][j]).T
               for j in range(len(al_rs['alpha_cntrd']))]
     # Extracting  alpha summary information
-    al_sm = [pd.DataFrame(al_rs['alpha_sum_dat'][j]).T
+    al_sm = [pd.DataFrame(al_rs['alpha_sum_dat'][j])
              for j in range(len(al_rs['alpha_sum_dat']))]
     # Adding variable names and row names to df and summary df
     for j in range(len(al_rs['alpha_sum_dat'])):
-        al_ldf[j].columns = al_rs['alpha_sum_row'][j]
-        al_sm[j].columns = al_rs['alpha_sum_row'][j]
-        al_sm[j].index= al_rs['alpha_sum_clmn']
+        al_ldf[j].columns = al_rs['alpha_sum_clmn'][j]
+        al_sm[j].columns = al_rs['alpha_sum_clmn'][j]
+        al_sm[j].index= al_rs['alpha_sum_row']
     # Collecting into output list
     out = [inpt_dic, bt_df, bt_sm, al_ldf, al_sm]
     return out
@@ -86,7 +90,8 @@ out                   (list of lists) of the following elements
     with open(data_file_full) as f_obj:
         pscdata = json.load(f_obj)
     # Extracting the data set dgp dictionary
-    inpt_dict = pscdata[0]
+    inpt_dict = pscdata[0].copy()
+
     # Names of primary coefficients
     pcoeff_nms = ([ ''.join(['$\\beta_{',str(1),',',str(i+1),'}$'])
                         for i in range(pscdata[0]['n_end']
