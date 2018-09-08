@@ -4,7 +4,7 @@
 
 import numpy as np
 import ipywidgets as ipw
-from IPython.display import display
+from IPython.display import display, display_html
 import matplotlib.pyplot as plt
 from matplotlib import gridspec
 import pandas as pd
@@ -163,9 +163,22 @@ out              (plot) density plot
     ax.set_title(''.join(['Distribution of Estimated ',coeff[0].columns[w]]))
     plt.show()
 
+########################################
+def display_side_by_side(dfs,nms):
+    html_str = ''
+    html_str+= '<table>'
+    for j in range(len(dfs)):
+        html_str+= '<td>'
+        html_str+= nms[j]
+        html_str+= '<br>'
+        html_str+= dfs[j].to_html()
+        html_str+= '<td>'
+    html_str+='<table>'
+    display_html(html_str.replace('table','table style="display:inline"'),raw=True)
+
 #########################################
 
-def tbl_dsp(tables,n_eqn,s_eqn,line_nms):
+def tbl_dsp(tables,n_eqn,s_eqn,line_nms,horz = 0):
     """
 INPUTS
 tables           (list of df's)  summary table's
@@ -180,18 +193,21 @@ A number of summary tables displayed
     # Shifting the value of the indicator to match index
     s_eqn = s_eqn-1
     # Outputing Tables
-    if n_eqn > 1:
-        for j in range(len(tables)):
-            display(tables[j][s_eqn])
-            display(''.join(['Case ', str(j+1),':', line_nms[j]]))
-    elif n_eqn == 1:
-        for j in range(len(tables)):
-            display(tables[j])
-            display(''.join(['Case ', str(j+1),':', line_nms[j]]))
+    if horz == 0:
+        if n_eqn > 1:
+            for j in range(len(tables)):
+                display(tables[j][s_eqn])
+                display(''.join(['Case ', str(j+1),':', line_nms[j]]))
+        elif n_eqn == 1:
+            for j in range(len(tables)):
+                display(tables[j])
+                display(''.join(['Case ', str(j+1),':', line_nms[j]]))
+    elif horz == 1:
+        display_side_by_side(tables,line_nms)
 
 #########################################
 
-def cfs_dsp(coeff,tables,n_eqn,y_lm,line_nms):
+def cfs_dsp(coeff,tables,n_eqn,y_lm,line_nms,tbl_horz = 0):
     """
 INPUTS
 tables           (list of df's)  summary table's
@@ -206,6 +222,10 @@ Plot and Tables Displayed with interactive widgets
     # Layout of each widget
     box_hlayout = ipw.Layout(display='flex',flex_flow='row',align_items='stretch'
                              ,width='95%')
+
+    box_vlayout = ipw.Layout(display='flex', flex_flow='column', align_items='stretch',
+                    width='10%', height = 'auto', justify_content='space-between')
+
     if n_eqn == 1:
         # Coefficient selection widget
         coeff_sel = ipw.IntSlider( min = 1 , max = coeff[0].shape[1], value = 1, step = 1
@@ -215,7 +235,7 @@ Plot and Tables Displayed with interactive widgets
     elif n_eqn > 1:
         # Coefficient selection widget
         coeff_sel = ipw.IntSlider( min = 1 , max = coeff[0][0].shape[1], value = 1, step = 1
-                              , description = 'Coefficient:'
+                              ,description = 'Coefficient:'
                               ,width = 'auto',layout = box_hlayout
                               ,style = {'description_width': 'initial'})
     # Equation selection widget
@@ -236,10 +256,17 @@ Plot and Tables Displayed with interactive widgets
                                     ,readout_format='.1f',width = 'auto'
                                     ,layout=box_hlayout
                                     ,style = {'description_width': 'initial'})
+
+    ylim_sel = ipw.FloatSlider(min = 0 , max = 15, value = y_lm, step = 1
+                     ,description = 'y limits'
+                     ,orientation = 'vertical',length = 'auto'
+                     ,layout = box_vlayout
+                     ,style = {'description_length': 'initial'},readout = False)
+
     # Interactive call of density function plot
     coeff_out =  ipw.interactive_output(coeffden ,{'coeff': ipw.fixed(coeff)
                                                  ,'line_nms': ipw.fixed(line_nms)
-                                                 ,'x_lm': xlim_sel, 'y_lm': ipw.fixed(y_lm)
+                                                 ,'x_lm': xlim_sel, 'y_lm': ylim_sel
                                                  ,'c_h': ch_sel,'w': coeff_sel
                                                  ,'n_eqn': ipw.fixed(n_eqn)
                                                  ,'s_eqn': eqn_sel})
@@ -247,9 +274,13 @@ Plot and Tables Displayed with interactive widgets
     table_out = ipw.interactive_output(tbl_dsp,{'tables': ipw.fixed(tables)
                                                 ,'n_eqn': ipw.fixed(n_eqn)
                                                 ,'s_eqn': eqn_sel
-                                                ,'line_nms': ipw.fixed(line_nms)} )
+                                                ,'line_nms': ipw.fixed(line_nms)
+                                                ,'horz': ipw.fixed(tbl_horz)})
     # Return of the constructed block with widgetes and tables.
-    return ipw.VBox([table_out,coeff_out,coeff_sel,ch_sel,xlim_sel,eqn_sel])
+    if n_eqn == 1:
+        return ipw.VBox([table_out,ipw.HBox([coeff_out,ylim_sel]),coeff_sel,ch_sel,xlim_sel])
+    else:
+        return ipw.VBox([table_out,ipw.HBox([coeff_out,ylim_sel]),coeff_sel,ch_sel,xlim_sel,eqn_sel])
 
 #########################################
 
