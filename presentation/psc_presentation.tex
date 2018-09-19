@@ -45,6 +45,18 @@
 
 \begin{document}
 
+\begin{frame} 
+\frametitle{Presentation Documents} 
+
+\begin{itemize} 
+	\item 
+\end{itemize} 
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 \frame{\titlepage}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -56,7 +68,7 @@ Basic Elements
 \begin{itemize} \addtolength{\itemsep}{\baselineskip}
     \item Linear in parameters fixed effects panel model
     \item Subset of regressors are endogenous
-    \item Relevant instruments vary by cross section
+    \item Relevant instruments vary by cross section 
     \item Relevant instruments are unknown subset of larger collection
 \end{itemize}
  
@@ -68,11 +80,12 @@ Basic Elements
 
 Applications / Motivation
 \begin{itemize}\addtolength{\itemsep}{\baselineskip}
+    \item Spatial distance separating cross sections 
+    \item Lack of sufficient domain/out of sample information
     \item Growth and Foreign Aid Models: Burnside and Dollar (2000) AER  
     \item Sensitivity to Set of Instruments:    Leon-Gonzalez et. al. (2015) JoMa
-    \item Making model selection more explicit while battling overfitting
-    \item Sufficient spatial distance separating cross sections 
-    \item Little to no domain knowledge / replacing ad hoc procedures
+    \item Explicitly incorporate model selection and battling overfitting
+    \item Replacing ad hoc procedures
 \end{itemize}
 
 
@@ -125,10 +138,10 @@ E(& V_{jdt} | Z_{2jt},W_{jt}) = 0
 
 	\end{enumerate}
 \vspace{0.25cm}	
- Consequently,
-	\begin{align*} 
-	E( \varepsilon_{jt} | Z_{2jt},W_{t},V_{jt}) = E(\varepsilon_{jt} | V_{jt}) =  E(f_j(V_{jt}) + u_{jt} | V_{jt}) = f_j(V_{jt}) = \sum_{d=1}^{p_1} f_{jd}(V_{jdt}) \\
-	\end{align*}
+% Consequently,
+%	\begin{align*} 
+%	E( \varepsilon_{jt} | Z_{2jt},W_{t},V_{jt}) = E(\varepsilon_{jt} | V_{jt}) =  E(f_j(V_{jt}) + u_{jt} | V_{jt}) = f_j(V_{jt}) = \sum_{d=1}^{p_1} f_{jd}(V_{jdt}) \\
+%	\end{align*}
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -220,7 +233,7 @@ Then $\beta_1$ and $\beta_2$ are identified, in particular,
 Must Estimate $\hat{V}_{jdt}$ as a first step \\
 \begin{itemize} \addtolength{\itemsep}{\baselineskip}
     \item $W_{jdt} \in \mathbb{R}^{w_{jd}}$ unknown subvector of $W_t \in \mathbb{R}^w$. 
-    \item Subset selection and coefficient estimation with lasso
+    \item Subset selection and coefficient estimation with Lasso
 \end{itemize}
 
 
@@ -243,7 +256,8 @@ Why Subset / Model Selection? \\
 
 	\item Underfitting $E(Z_{1jdt} | Z_{2jt},W_{t})$ 
        
-      \item How to estimate $\alpha_{2d}$ when $M_{jd}$ is also unknown?
+      \item Overfitting on the sample 
+     
 
 \end{itemize} 
 
@@ -251,29 +265,19 @@ Why Subset / Model Selection? \\
 
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame} 
-\frametitle{Model Selection and Overfitting} 
-
-\begin{itemize} 
-	\item 
-\end{itemize} 
-
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \begin{frame} 
 \frametitle{Sample Splitting} 
 
 \begin{itemize}  \addtolength{\itemsep}{\baselineskip}
+      \item Similar to Chernozhukov et al. (2017) NBER working paper 23564
 	\item Let $n_p \in \mathbb{N}$ be the number of partitions to be generated
 	\item Generate Partition $\{\mathcal{I}_g\}_{g=1}^{n_p}$ of $\{1,2,\cdots,T\}$ i.e.
 	\begin{align*}
 	\mathcal{I}_g \subset \{i\}_{i=1}^{T} \;\;\;\;\;\; \mathcal{I}_g \cap \mathcal{I}_{g'} = \emptyset \;\;\; \text{and} \;\;\;  \bigcup_{g=1}^{n_p} \mathcal{I}_g = \{i\}_{i=1}^{T}
 	\end{align*}
-where each partition has approx same cardinality
        \item Model Selection and Projection Estimation with Training Set: $\mathcal{I}^c_g$
        \item Estimation of $[ \; \hat{\beta} _{g1}' \;\; \hat{\beta}_{g2}' \;]'$ with Testing Set: $\mathcal{I}_g$  
        \item Final Estimator:
@@ -524,7 +528,7 @@ Let
 $$ 
 \begin{align*} 
 Z_{2jt} &= \begin{bmatrix} Z_{2jt,1} & Z_{2jt,2} & \cdots & Z_{2jt,n_{ex}} \end{bmatrix}' \\[10pt]  
-\tilde{V}_{jt} &= \begin{bmatrix} V_{jt,1} & V_{jt,2}& \cdots & V_{jt,n_{end}} & \varepsilon_{j} \end{bmatrix}' \\[10pt]
+\tilde{V}_{jt} &= \begin{bmatrix}  \varepsilon_{j}  & V_{j1t} & V_{j2t}& \cdots & V_{jn_{end}t}\end{bmatrix}' \\[10pt]
 \end{align*} 
 $$
 
@@ -540,7 +544,7 @@ Then generate $\{Z_{1t},Z_{2t},W_t\}_{t=1}^{ntp}$ from the following distributio
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame} 
-\frametitle{Endogenous Variable and Regressand Generation} 
+\frametitle{Endogenous Variable Generation} 
 
 \begin{itemize}\addtolength{\itemsep}{\baselineskip}
     \item Randomly Draw $\alpha_{1d} \in [1,-1]^{n_{exo}} $ for each $d \in \{1,2,\cdots,n_{end} \}$    
@@ -552,16 +556,32 @@ Then generate $\{Z_{1t},Z_{2t},W_t\}_{t=1}^{ntp}$ from the following distributio
     
     $$ Z_{1jd} =  \alpha_{0jd} + Z_{2jt}' \alpha_{1d} + W_{t}'M_j \alpha_{2d} + V_{jt,d} \hspace{.3cm} \text{ where } \hspace{.3cm} \alpha_{0jd} = 1/2+j/2 $$ 
   
-     \item Draw the coefficienct vector $[ \; \beta_1' \;\; \beta_2' \;]' \in [1,-1]^{n_{end} +n_{end}}$, and generate the following 
-$$ Y_{jt} &= \beta_0 + Z_{1jt}'\beta_1 + Z_{2jt}'\beta_2 + e_j + \varepsilon_{jt}\;\;\;\; \text{ where } \;\;\;\;  e_{j} = 1+j/2  $$
+
 \end{itemize}   
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame} 
-\frametitle{...} 
+\frametitle{Regressand Generation} 
 
-\begin{itemize} 
-	\item 
+\begin{itemize}
+
+     \item Draw the coefficient vector $[ \; \beta_1' \;\; \beta_2' \;]' \in [1,-1]^{n_{end} +n_{end}}$, and generate the following 
+$$ Y_{jt} &= \beta_0 + Z_{1jt}'\beta_1 + Z_{2jt}'\beta_2 + e_j + \varepsilon_{jt}\;\;\;\; \text{ where } \;\;\;\;  e_{j} = 1+j/2  $$
+
+Note due the manner that the error vector is generated, 
+
+\begin{align*} 
+E(\varepsilon_{jt} |V_{jt} ) = \rho_{er}' V_{er(2,2)}^{-1} \begin{bmatrix} V_{j1t}  \\   V_{j2t} \\ \vdots \\ V_{jqt} \end{bmatrix} 
+\end{align*}
+where 
+\begin{align*} 
+V_{er} = \begin{bmatrix} 1 & \rho_{er}' \\
+ \rho_{er} & V_{er(22)} 
+ \end{bmatrix}
+\end{align*}
+
+
+
 \end{itemize} 
 
 \end{frame}
