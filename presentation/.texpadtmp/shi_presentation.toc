@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {2}{Basic Model}{5}{0}{2}
+\beamer@sectionintoc {3}{Identification}{8}{0}{3}
+\beamer@sectionintoc {4}{Estimation}{10}{0}{4}
+\beamer@sectionintoc {5}{Monte Carlo Data Generating Process}{17}{0}{5}
