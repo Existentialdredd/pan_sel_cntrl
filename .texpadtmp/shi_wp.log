@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  10 DEC 2018 12:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  10 DEC 2018 12:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**psc_proposal.tex
-(./psc_proposal.tex
+**shi_wp.tex
+(./shi_wp.tex
 LaTeX2e <2016/03/31>
 Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/article.cls
@@ -910,9 +910,8 @@ File: tikzlibrarybackgrounds.code.tex 2013/07/18 v3.0.1a (rcs-revision 1.3)
 \c@corollary=\count157
 \c@proofpart=\count158
 
-(/Users/ericpenner/Desktop/post_grad_rsrch/pan_sel_cntrl/.texpadtmp/psc_proposa
-l.aux)
-\openout1 = `psc_proposal.aux'.
+(/Users/ericpenner/Desktop/post_grad_rsrch/pan_sel_cntrl/.texpadtmp/shi_wp.aux)
+\openout1 = `shi_wp.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
 LaTeX Font Info:    ... okay on input line 59.
@@ -928,7 +927,6 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 59.
 LaTeX Font Info:    ... okay on input line 59.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 59.
 LaTeX Font Info:    ... okay on input line 59.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -996,15 +994,13 @@ LaTeX Info: Redefining \ref on input line 59.
 LaTeX Info: Redefining \pageref on input line 59.
 LaTeX Info: Redefining \nameref on input line 59.
 
-(/Users/ericpenner/Desktop/post_grad_rsrch/pan_sel_cntrl/.texpadtmp/psc_proposa
-l.out)
-(/Users/ericpenner/Desktop/post_grad_rsrch/pan_sel_cntrl/.texpadtmp/psc_proposa
-l.out)
+(/Users/ericpenner/Desktop/post_grad_rsrch/pan_sel_cntrl/.texpadtmp/shi_wp.out)
+(/Users/ericpenner/Desktop/post_grad_rsrch/pan_sel_cntrl/.texpadtmp/shi_wp.out)
 \@outlinefile=\write5
-\openout5 = `psc_proposal.out'.
+\openout5 = `shi_wp.out'.
 
 LaTeX Font Info:    Try loading font information for U+msa on input line 74.
- (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 74.
@@ -1041,22 +1037,21 @@ Overfull \hbox (15.41447pt too wide) in paragraph at lines 292--292
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 366.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 366.
 
-(/Users/ericpenner/Desktop/post_grad_rsrch/pan_sel_cntrl/.texpadtmp/psc_proposa
-l.aux)
+(/Users/ericpenner/Desktop/post_grad_rsrch/pan_sel_cntrl/.texpadtmp/shi_wp.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 366.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 366.
-Package rerunfilecheck Info: File `psc_proposal.out' has not changed.
+Package rerunfilecheck Info: File `shi_wp.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 366.
  ) 
 Here is how much of TeX's memory you used:
  21880 strings out of 493014
- 434630 string characters out of 6133351
+ 434552 string characters out of 6133351
  536828 words of memory out of 5000000
  24960 multiletter control sequences out of 15000+600000
  7516 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,16n,76p,1111b,471s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,16n,76p,1105b,471s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
@@ -1073,7 +1068,7 @@ ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive
 016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/20
 16/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 Output written on /Users/ericpenner/Desktop/post_grad_rsrch/pan_sel_cntrl/.texp
-adtmp/psc_proposal.pdf (8 pages, 180806 bytes).
+adtmp/shi_wp.pdf (8 pages, 180806 bytes).
 PDF statistics:
  129 PDF objects out of 1000 (max. 8388607)
  102 compressed objects within 2 object streams

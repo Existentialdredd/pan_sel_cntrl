@@ -173,8 +173,8 @@ def display_side_by_side(dfs,nms):
         html_str+= '<br>'
         html_str+= dfs[j].to_html()
         html_str+= '<td>'
-    html_str+='<table>'
-    display_html(html_str.replace('table','table style="display:inline"'),raw=True)
+    html_str+='</table>'
+    display_html(html_str.replace('table','table style="display:inline,height:auto"'),raw=True)
 
 #########################################
 
