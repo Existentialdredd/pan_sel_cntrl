@@ -10283,6 +10283,7 @@ padding: 4px;
 }
 .rendered_html th {
 font-weight: bold;
+vertical-align:bottom;
 }
 
 .rendered_html thead {
