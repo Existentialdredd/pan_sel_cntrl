@@ -23,14 +23,14 @@ div#notebook {
   div.cell {
     display: block;
     page-break-inside: avoid;
-  } 
-  div.output_wrapper { 
-    display: block;
-    page-break-inside: avoid; 
   }
-  div.output { 
+  div.output_wrapper {
     display: block;
-    page-break-inside: avoid; 
+    page-break-inside: avoid;
+  }
+  div.output {
+    display: block;
+    page-break-inside: avoid;
   }
 }
 </style>
@@ -78,7 +78,7 @@ div#notebook {
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">kernel</span> <span class="k">as</span> <span class="nn">kr</span>
-<span class="kn">import</span> <span class="nn">psc_dbl_sumdisp</span> <span class="k">as</span> <span class="nn">psd</span> 
+<span class="kn">import</span> <span class="nn">psc_dbl_sumdisp</span> <span class="k">as</span> <span class="nn">psd</span>
 </pre></div>
 
 </div>
@@ -95,7 +95,7 @@ div#notebook {
 &lt;style&gt;
 #.cell.selected~.unselected { display: none; }
 .cell.code_cell.unselected .input { display: none; }
-&lt;/style&gt; 
+&lt;/style&gt;
 </pre></div>
 
 </div>
@@ -123,7 +123,7 @@ div#notebook {
 </div>
 </div>
 
-</div>
+
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -192,7 +192,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res_out</span> <span class="o">=</span> <span class="p">[[</span><span class="n">psd</span><span class="o">.</span><span class="n">psc_load</span><span class="p">(</span><span class="n">inpt_filenames</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inpt_filenames</span><span class="p">[</span><span class="n">k</span><span class="p">]))]</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res_out</span> <span class="o">=</span> <span class="p">[[</span><span class="n">psd</span><span class="o">.</span><span class="n">psc_load</span><span class="p">(</span><span class="n">inpt_filenames</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inpt_filenames</span><span class="p">[</span><span class="n">k</span><span class="p">]))]</span>
                                                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">line_nms</span><span class="p">))]</span>
 
 <span class="n">estin_dcts</span> <span class="o">=</span> <span class="p">[[</span><span class="n">res_out</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inpt_filenames</span><span class="p">[</span><span class="n">k</span><span class="p">]))]</span>
@@ -201,15 +201,15 @@ div#notebook {
 <span class="n">dgp_sum_filenames</span> <span class="o">=</span> <span class="p">[[</span><span class="n">estin_dcts</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;input_filename&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;pscdata&#39;</span><span class="p">,</span><span class="s1">&#39;pscsum&#39;</span><span class="p">)</span>
                                 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inpt_filenames</span><span class="p">[</span><span class="n">k</span><span class="p">]))]</span>
                                 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">line_nms</span><span class="p">))]</span>
-    
-<span class="n">dgp_dicts</span> <span class="o">=</span> <span class="p">[[</span><span class="n">psd</span><span class="o">.</span><span class="n">pscsum_load</span><span class="p">(</span><span class="n">dgp_sum_filenames</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> 
+
+<span class="n">dgp_dicts</span> <span class="o">=</span> <span class="p">[[</span><span class="n">psd</span><span class="o">.</span><span class="n">pscsum_load</span><span class="p">(</span><span class="n">dgp_sum_filenames</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
                                 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dgp_sum_filenames</span><span class="p">[</span><span class="n">k</span><span class="p">]))]</span>
                                 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">line_nms</span><span class="p">))]</span>
 
 <span class="n">dgpin_dcts</span> <span class="o">=</span>  <span class="p">[[</span><span class="n">dgp_dicts</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inpt_filenames</span><span class="p">[</span><span class="n">k</span><span class="p">]))]</span>
                                    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">line_nms</span><span class="p">))]</span>
 
-<span class="n">merged_dcts</span> <span class="o">=</span> <span class="p">[[{</span><span class="o">**</span><span class="n">estin_dcts</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">i</span><span class="p">],</span><span class="o">**</span><span class="n">dgpin_dcts</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">i</span><span class="p">]}</span> 
+<span class="n">merged_dcts</span> <span class="o">=</span> <span class="p">[[{</span><span class="o">**</span><span class="n">estin_dcts</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">i</span><span class="p">],</span><span class="o">**</span><span class="n">dgpin_dcts</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">i</span><span class="p">]}</span>
                                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inpt_filenames</span><span class="p">[</span><span class="n">k</span><span class="p">]))]</span>
                                    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">line_nms</span><span class="p">))]</span>
 
@@ -254,7 +254,7 @@ div#notebook {
 <ul>
     <li> <a href='#trial_1'> Trial Set 1:  Estimator comparison varying the total number of instruments</a> <br>
         <br>
-    <ul> 
+    <ul>
         <li> <a href='#trial_11'> Trial Set 1.1:  Estimator Comparison when $t_{inst} = 15$ </a> <br>
         <br>
         <li> <a href='#trial_12'> Trial Set 1.2:  Estimator Comparison when $t_{inst} = 30$ </a> <br>
@@ -263,12 +263,12 @@ div#notebook {
         <br>
         <li> <a href='#trial_14'> Trial Set 1.4:   Lasso Comparison where $t_{inst} \in \{15,30,45,100\}$ </a> <br>
         <br>
-    </ul> 
+    </ul>
      <li> <a href='#trial_2'> Trial Set 2.0: Properties of Lasso Estimator, Increasing Number of Cross Sections </a> <br>
        <br>
      <li> <a href='#trial_3'> Trial Set 3.0: Properties of Lasso Estimator, Increasing Number of Time Periods </a> <br>
        <br>
-<!--    <ul> 
+<!--    <ul>
     <li> <a href='#trial_21'> Trial Set 2.1: Varying the number of Cross Sections, Known Subset </a> <br>
     <br>
     <li> <a href='#trial_22'> Trial Set 2.2: Varying the number of Cross Sections, Lasso </a> <br>
@@ -284,16 +284,16 @@ div#notebook {
     <ul>
         <li> <a href='#trial_61'>  Trial Set 6.1:  Unknown Subset vs. Lasso, $ncs = 15,\;\; t_{inst} = 30$<br>
             <br>
-        <li> <a href='#trial_62'>  Trial Set 6.2: Unknown Subset vs. Lasso, $ncs = 25,\;\; t_{inst} = 50$<br> 
+        <li> <a href='#trial_62'>  Trial Set 6.2: Unknown Subset vs. Lasso, $ncs = 25,\;\; t_{inst} = 50$<br>
             <br>
         <li> <a href='#trial_63'>   Trial Set 6.3: Unknown Subset vs. Lasso, $ncs = 35,\;\; t_{inst} = 70$<br> <br>
         <li> <a href='#trial_64'>   Trial Set 6.4: Lasso Comparison <br> <br>
-    </ul> 
+    </ul>
     <li> <a href='#trial_7'> Trial Set 7: Five Instruments per Cross Section: Unknown Subset vs. Lasso </a> <br><br>
     <ul>
         <li> <a href='#trial_71'>  Trial Set 7.1:  Unknown Subset vs. Lasso, $ncs = 10,\;\; t_{inst} = 50$<br>
             <br>
-        <li> <a href='#trial_72'>  Trial Set 7.2: Unknown Subset vs. Lasso, $ncs = 20,\;\; t_{inst} = 100$<br> 
+        <li> <a href='#trial_72'>  Trial Set 7.2: Unknown Subset vs. Lasso, $ncs = 20,\;\; t_{inst} = 100$<br>
             <br>
         <li> <a href='#trial_73'>   Trial Set 7.3: Unknown Subset vs. Lasso, $ncs = 30,\;\; t_{inst} = 150$<br><br>
         <li> <a href='#trial_74'>   Trial Set 7.4: Lasso Comparison <br> <br>
@@ -1249,12 +1249,12 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3> Trial Set 1.1: Comments on Secondary Function Coefficient Estimates </h3><ul> 
+<h3> Trial Set 1.1: Comments on Secondary Function Coefficient Estimates </h3><ul>
        <li> Here you can see that, as we would expect, the known subset estimator generates unbiased estimators, the unknown subset estimator generates badly biased estimates, and the lasso estimator generates estimates whose bias roughly splits that difference between the previous two.
-       <br>   
+       <br>
        <li> Note that the properties of the lasso estimator are what you would expect from a consistent estimator, where the variance of the sampling distribution of each coefficient in inversely proportional to the number of crossections that the instrument it multiplies is relevant to. <br>
        <br>
-       <li> This presentation is really only a frame of reference as the sampling distribution of the estimates isn't of first order importance in this estimator. 
+       <li> This presentation is really only a frame of reference as the sampling distribution of the estimates isn't of first order importance in this estimator.
 </ul>
 </div>
 </div>
@@ -1534,8 +1534,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul> 
-    <li> Oracle is clearly the best estimator, followed by the known subset, lasso estimator, and unknown subset estimator. In both cases the bias of the lasso estimator more or less splits the difference between the the known and unknown estimator.  <br> 
+<ul>
+    <li> Oracle is clearly the best estimator, followed by the known subset, lasso estimator, and unknown subset estimator. In both cases the bias of the lasso estimator more or less splits the difference between the the known and unknown estimator.  <br>
 </ul>
 </div>
 </div>
@@ -1555,7 +1555,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2> Trial Set 1.2: Estimator Comparison when $t_{inst} = 30$ </h2><p>Here we examine the sampling distribution of $\hat{\beta}_1, \hat{\alpha}_{1}$</p>
-<p><ul> 
+<p><ul>
     <li> Number of Cross Sections: 10 <br> <br>
     <li> Number of Time Periods: 50 <br> <br>
     <li> Number of Endogenous Regressors: 1    <br><br>
@@ -2435,7 +2435,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3> Trial Set 1.2: Comments on Secondary Function Coefficient Estimates </h3><ul>
-       <li> Same comments roughly as 1.1 
+       <li> Same comments roughly as 1.1
 </ul><ul>
 <li>Same comments as </li>
 </ul>
@@ -3709,7 +3709,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
     <li> The behavior here is the same as the the known subset estimation in trials set 1.1
-        <br><br> 
+        <br><br>
 </ul>
 </div>
 </div>
@@ -4826,7 +4826,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
     <li> The behavior here is the same as the the known subset estimation in trials set 1.1
-        <br><br> 
+        <br><br>
 </ul>
 </div>
 </div>
@@ -5837,7 +5837,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
     <li> YYXYXYXYXY
-        <br><br> 
+        <br><br>
 </ul>
 </div>
 </div>
@@ -6841,11 +6841,12 @@ div#notebook {
 </div>
 </div>
 </div>
+</div>
     </div>
   </div>
 </body>
 
- 
+
 
 
 </html>
