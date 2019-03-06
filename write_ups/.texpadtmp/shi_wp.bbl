@@ -1,0 +1,27 @@
+\begin{thebibliography}{5}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+
+\bibitem[{Basu et~al.(2006)Basu, Fernald, and Kimball}]{Basu:2006gs}
+Basu, S., Fernald, J.~G., Kimball, M.~S., December 2006. Are technology
+  improvements contractionary. American Economic Review 96~(5), 1418--1448.
+
+\bibitem[{Burnside and Dollar(2000)}]{Burnside:2000oa}
+Burnside, C., Dollar, D., 868 2000. Aid , policies, and growth. American
+  Economic Review 90~(4), 847.
+
+\bibitem[{Manzan and Zerom(2005)}]{Manzan:2005jx}
+Manzan, S., Zerom, D., 2005. Kernel estimation of a partially linear model.
+  Statstics and Probability Letters 73, 313 -- 322.
+
+\bibitem[{Newey et~al.(1999)Newey, Powell, and Vella}]{Newey:1999fk}
+Newey, W.~K., Powell, J.~L., Vella, F., May 1999. Nonparametric estimation of
+  triangular simultaneous equations models. Econometrica 67~(3), 565--603.
+
+\bibitem[{Varian(2014)}]{Varian:2014nt}
+Varian, H., 2014. Big data: New tricks for econometrics. Journal of Economic
+  Perspectives 28~(2), 3--28.
+
+\end{thebibliography}

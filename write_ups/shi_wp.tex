@@ -60,7 +60,7 @@
 
 \begin{center}
 \doublespacing
-\Large Selection of Heterogeneous Instruments in Partially LinearFixed Effects Panel Regression \\ 
+\Large Selection of Heterogeneous Instruments inFixed Effects Panel Regression \\ 
 \vspace{0.25cm}
 \large Eric Penner, \emph{University of California Berkeley} \rm \\
 \large August, 2018
@@ -68,14 +68,14 @@
 \doublespacing
 \noindent In general, the study of panel data is concerned with accommodating the varying sources of heterogeneity that exist between cross sectional units. This heterogeneity may arise when cross sectional units are separated by some spatial distance be it physical distance, difference in cultural norms, or degree of separation in a network of trading partners. Regardless of the source of this heterogeneity the goal is to identify and estimate some set of effects which are common to all cross sections. Most panel data estimators are solely concerned with treating sources of heterogeneity that cannot be excluded from the primary regression in the guise of time or fixed effects. Few if any panel data estimators consider heterogeneity in the relevant instruments needed to treat the presence of endogenous regressors. This paper develops an estimator which accommodates the reasonable assumption that the instruments needed to decompose the variation in one or more endogenous variables will vary by cross section. This paper also incorporates the complicating factor that the instruments relevant to each cross section are an unknown subset of a potentially high dimensional ($k>>n$) vector.\\ 
 
-\noindent Motivation for an estimator like the one developed in this paper is most clear in the context of Macroeconomics. There it is common to run cross industry, or cross country regressions in order to identify some common characteristic like total factor productivity (Basu et al. 2006) or growth arising from foreign aid (Burnside et al. 2000). As is common in economics, in each of the supplied examples the authors acknowledge and treat the presence of endogenous regressors but, both are either unable or unwilling to consider heterogenous instruments for those endogenous variables. It is well understood that the treatment of endogeneity relies on the use of instrumental variables to decompose the variation of each endogenous regressor into orthogonal parts, one part that is related to the error term and one that isn't. The validity of any treatment of endogeneity relies on the validity of this decomposition. It is reasonable to assume that this decomposition varies by cross section. For example, in the growth and foreign aid panel regression of Burnside and Dollar (2000) foreign aid is the endogenous regressor and it makes sense that the factors which determine the foreign aid that a country like Egypt receives, being that it is neighbors with Israel, is on the Mediterranean, and sits astride the Suez canal, would be different than a country like Papua New Guinea whose foreign aid is likely more humanitarian in nature.            \\
+\noindent Motivation for an estimator like the one developed in this paper is most clear in the context of Macroeconomics. There, it is common to run cross industry, or cross country regressions in order to identify some common characteristic like total factor productivity \cite{Basu:2006gs} or growth arising from foreign aid \cite{Burnside:2000oa}. As is common in economics, in each of the supplied examples the authors acknowledge and treat the presence of endogenous regressors but, both are either unable or unwilling to consider heterogenous instruments for those endogenous variables. It is well understood that the treatment of endogeneity relies on the use of instrumental variables to decompose the variation of each endogenous regressor into orthogonal parts, one part that is related to the error term and one that isn't. The validity of any treatment of endogeneity relies on the validity of this decomposition. It is reasonable to assume that this decomposition varies by cross section. For example, in the growth and foreign aid panel regression of \cite{Burnside:2000oa} foreign aid is the endogenous regressor and it makes sense that the factors which determine the foreign aid that a country like Egypt receives, being that it is neighbors with Israel, is on the Mediterranean, and sits astride the Suez canal, would be different than a country like Papua New Guinea whose foreign aid is likely more humanitarian in nature.            \\
    
-\noindent This paper further assumes that the vector of instrumental variables relevant to each cross section is an unknown subset of a large collection. This assumption is really just an acknowledgement that gathering sufficient domain information regarding each cross section in order to determine what the instruments should be is likely too difficult or not possible. Another aspect of this paper is that this collection of potential instruments can be very high dimensional. This allows the use of more modern and high dimensional data sources to be used for decomposing endogenous regressors for example cell phone, and scanner data. \\
+\noindent This paper further assumes that the vector of instrumental variables relevant to each cross section is an unknown subset of a large collection. This assumption is really just an acknowledgement that gathering sufficient domain information regarding each cross section in order to determine what the instruments should be is likely too difficult or not possible. Another aspect of this paper is that this collection of potential instruments can be very high dimensional. This allows the use of more modern and high dimensional data sources, as is encouraged in \cite{Varian:2014nt}, to be used for decomposing endogenous regressors, for example; cell phone, and scanner data. 
 
 \section*{Methodology}
 
 
-\noindent Given a linear in parameters fixed effects panel data model, suppose that for all cross-sections and time periods a known subset of regressors is correlated with the error term. This endogeneity problem will be resolved using the control function approach of Newey, Powell, and Vella (1999), with the additional complication of having the set of instrumental variables which are appropriate/available for at least one cross-section  not identical to those available/appropriate for a non empty subset of other cross-sections. 
+\noindent Given a linear in parameters fixed effects panel data model, suppose that for all cross-sections and time periods a known subset of regressors is correlated with the error term. This endogeneity problem will be resolved using the control function approach of \cite{Newey:1999fk}, with the additional complication of having the set of instrumental variables which are appropriate/available for at least one cross-section  not identical to those available/appropriate for a non empty subset of other cross-sections. 
 
 
 
@@ -107,7 +107,7 @@ Z_{jt} = [\; Z_{1jt}' \;\; Z_{2jt}' \;]'  \;\;\; \text{ and } \;\;\; V_{jt} = [ 
 
 
  \noindent
-As mentioned above $E(\varepsilon_{jt} | Z_{1jt} ) \neq 0$ means that the error term $\varepsilon_{jt}$ is not orthogonal to the space of functions of $Z_{1jt}$. Following the control function approach of Newey, Powell, and Vella (1999), I assume that there exists a random variable $u_{jt}$ and unknown function $f_j(\cdot)$ such that;
+As mentioned above $E(\varepsilon_{jt} | Z_{1jt} ) \neq 0$ means that the error term $\varepsilon_{jt}$ is not orthogonal to the space of functions of $Z_{1jt}$. Following the control function approach of \cite{Newey:1999fk}, I assume that there exists a random variable $u_{jt}$ and unknown function $f_j(\cdot)$ such that;
  \begin{align*}
  \varepsilon_{jt} = f_j(V_{jt}) + u_{jt}  \;\;\;\ \text{ where } \;\;\; E(u_{jt} | \{Z_{j_k},W_{jk},X_{jk},V_{jk} \}_{k=1}^t) = 0
  \end{align*}
@@ -137,7 +137,7 @@ E(& V_{jt} | Z_{2jt},W_{jt}) = 0
 \noindent \bf Remarks \rm:
 \begin{enumerate}[a.)]
     \item In equation (5), by differencing equation (1), including the control function, and imposing additivity, we have eliminated fixed effect $e_j$, but in return we now have a collection of equations $\{f_{j1}(\cdot),f_{j2}(\cdot), \ldots , f_{jp_1}(\cdot)\}$ unique to each cross-section $j$, a fate seemingly even worse than the presence of fixed effects.
-    \item In the following I will show that using a variation on the identification technique of Manzan and Zerom (2005) SaPL, it is possible under mild conditions to identify and estimate finite dimensional parameter $\beta_1$  and hopefully achieve $\sqrt{n}$ asymptotic normality  without having to jointly estimate $f_j(V_{jt})$,
+    \item In the following I will show that using a variation on the identification technique of \cite{Manzan:2005jx}, it is possible under mild conditions to identify and estimate finite dimensional parameter $\beta_1$  and hopefully achieve $\sqrt{n}$ asymptotic normality  without having to jointly estimate $f_j(V_{jt})$,
 \end{enumerate}
 
 \noindent Next in preparation for the following lemma regarding the identification of parameter vector $\beta_1$ I define the following density ratios,
@@ -368,11 +368,13 @@ where $ \Delta Z_{jt}  = [ \; \; \Delta Z_{jt,1}    \;\;    \Delta Z_{jt,2}     
     
 \section*{Monte Carlo Exercise}
 
-Please see accompanying file \begin{verbatim} shi_monte_carlo.html \end{verbatim}
+Please see accompanying file \begin{verbatim}shi_monte_carlo.html \end{verbatim}
     
 
-
-
+\newpage
+\section*{References}
+\bibliographystyle{/Users/ericpenner/Desktop/post_grad_rsrch/bibliography/elsart-harv.bst}
+\bibliography{/Users/ericpenner/Desktop/post_grad_rsrch/bibliography/ref_library.bib}
 
 
 
