@@ -1,8 +1,8 @@
-<h1> Panel Selection and Control </h1>
+<h1> Selection of Heterogenous Instruments in Fixed Effect Panel Regression </h1>
 
 <h3> By Eric Penner </h3>
 
-<h4> Summary: </h4> This repository contains a proposal, and supplemental Monte Carlo exercise for the working paper currently entitled "Panel Selection and Control". This purpose of this paper is the estimation of the parameters of (1) in the following system of equations.
+<h4> Summary: </h4> This repository contains a short summar, and supplemental Monte Carlo exercise for the working paper currently entitled "Selection of Heterogenous Instruments in Fixed Effect Panel Regression" and previously entitled "Panel Selection and Control". This purpose of this paper is the estimation of the parameters of (1) in the following system of equations.
 
 <p align = "center">
 <img src="psc_eqn.png"
